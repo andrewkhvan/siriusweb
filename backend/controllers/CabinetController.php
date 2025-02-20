@@ -3,14 +3,29 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use backend\models\Api;
 
 class CabinetController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
-        $data = new Api;
-        $result = $data->request($func = 'info');
+        $result = Api::request($func = 'info');
 
         return $this->render('index', [
             'data' => $result,
@@ -24,7 +39,11 @@ class CabinetController extends \yii\web\Controller
 
     public function actionInvestments()
     {
-        return $this->render('investments');
+        $result = Api::request($func = 'investments');
+
+        return $this->render('investments', [
+            'data' => $result,
+        ]);
     }
 
     public function actionPromo()

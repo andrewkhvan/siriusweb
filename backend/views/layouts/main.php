@@ -18,6 +18,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?> | <?= Yii::$app->name ?></title>
     <?php $this->head() ?>
@@ -40,7 +41,7 @@ AppAsset::register($this);
                             <div class="page-title-right">
                             <?= Breadcrumbs::widget([
                                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                                'class' => 'm-0',
+                                'options' => ['class' => 'm-0'],
                             ]) ?>
                             </div>
 
@@ -60,9 +61,7 @@ AppAsset::register($this);
                         <?= date('Y') ?> © Sirius Energy.
                     </div>
                     <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Develop by Optimal Course
-                        </div>
+                        <div class="text-sm-end d-none d-sm-block"></div>
                     </div>
                 </div>
             </div>
