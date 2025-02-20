@@ -25,24 +25,28 @@ class CabinetController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $result = Api::request($func = 'info');
+        $data = Api::request($func = 'info');
 
         return $this->render('index', [
-            'data' => $result,
+            'data' => $data,
         ]);
     }
 
     public function actionDeposits()
     {
-        return $this->render('deposits');
+        $data = Api::request($func = 'deposits');
+
+        return $this->render('deposits', [
+            'data' => $data,
+        ]);
     }
 
     public function actionInvestments()
     {
-        $result = Api::request($func = 'investments');
+        $data = Api::request($func = 'investments');
 
         return $this->render('investments', [
-            'data' => $result,
+            'data' => $data,
         ]);
     }
 
@@ -58,12 +62,20 @@ class CabinetController extends \yii\web\Controller
 
     public function actionTransactions()
     {
-        return $this->render('transactions');
+        $data = Api::request('transactions', ['pageNo' => 1]);
+
+        return $this->render('transactions', [
+            'data' => $data
+        ]);
     }
 
     public function actionWallet()
     {
-        return $this->render('wallet');
+        $data = Api::request('wallet');
+
+        return $this->render('wallet', [
+            'data' => $data,
+        ]);
     }
 
 }

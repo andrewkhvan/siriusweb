@@ -1,11 +1,12 @@
 <?php
 /** @var yii\web\View $this */
 
-$this->title = 'Promo';
+$this->title = 'Sirius Energy Promo';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<div class="card">
+    <div class="card-body">
+        <h4 class="">Invite partners</h4>
+    </div>
+</div>
