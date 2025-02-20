@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\LoginForm;
+use backend\models\SignupForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -70,7 +71,10 @@ class AuthController extends Controller
 
     public function actionSignup()
     {
-        return $this->render('signup');
+        $model = new SignupForm();
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 
     /**
