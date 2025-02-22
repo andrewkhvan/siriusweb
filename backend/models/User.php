@@ -13,6 +13,8 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
     public $rank;
+    public $balance;
+    public $ref_balance;
 
     private static $users = [
         '100' => [
@@ -91,6 +93,8 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
                 'email' => $data->Email,
                 'username' => $data->Email,
                 'rank' => $data->Rank,
+                'balance' => $data->Balance,
+                'ref_balance' => $data->RefBalance,
                 'authKey' => md5('authKey_' . $data->PartnerId),
                 'accessToken' => md5('accessToken_' . $data->PartnerId),
             ];
