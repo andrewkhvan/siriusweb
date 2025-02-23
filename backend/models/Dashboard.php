@@ -29,11 +29,12 @@ class Dashboard extends \yii\base\Model
     public $turnoverToNextRank;      //: 0
     public $depositUpToNextRank;     //: 0
     public $activeCount;     //: 
+    public $wAddress;     //: 
 
     public function rules()
     {
         return [
-            [['investment', 'investBonus', 'directBonus', 'secondLevelInvestBonus', 'rankBonus', 'totalBonus', 'balance', 'investBonusMonth', 'investBonusWeek', 'investBonusYear', 'rank', 'registrationDate', 'refCount', 'totalCount', 'totalStructInvestment', 'refBalance', 'cashOutSum', 'cashInSum', 'cashAwait', 'turnoverToNextRank', 'depositUpToNextRank', 'activeCount'], 'save'],
+            [['investment', 'investBonus', 'directBonus', 'secondLevelInvestBonus', 'rankBonus', 'totalBonus', 'balance', 'investBonusMonth', 'investBonusWeek', 'investBonusYear', 'rank', 'registrationDate', 'refCount', 'totalCount', 'totalStructInvestment', 'refBalance', 'cashOutSum', 'cashInSum', 'cashAwait', 'turnoverToNextRank', 'depositUpToNextRank', 'activeCount', 'wAddress'], 'save'],
         ];
     }
 
@@ -63,6 +64,7 @@ class Dashboard extends \yii\base\Model
         $this->turnoverToNextRank = $result->TurnoverToNextRank;
         $this->depositUpToNextRank = $result->DepositUpToNextRank;
         $this->activeCount = $result->ActiveCount;
+        $this->wAddress = $result->WAddress;
     }
 
     public function getRankTitle()

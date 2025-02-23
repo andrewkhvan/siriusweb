@@ -14,17 +14,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5 class="rounded bg-success-subtle p-2">Пополнение баланса</h5>
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TKLfH26wEGyphRJzMP1t6Q1pBDC3JNgQ1x" alt="">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= $data->WAddress ?>" alt="">
                     </div>
                     <div class="flex-shrink-0">
+                        <h4 class="mb-0">
+                            <img class="avatar-xxs" src="/images/svg/crypto-icons/usdt.svg" alt="USDT">
+                            <?= $data->Balance ?> USDT
+                        </h4>
                         <p>Доступный баланс</p>
-                        <p>Реф. баланс: <span class="badge bg-success"><?= number_format($data->Balance, 2, '.', ' ') ?> USDT</span></p>
+                        <p>Реф. баланс: <span class="badge bg-success"><?= number_format($data->RefBalance, 2, '.', ' ') ?> USDT</span></p>
                     </div>
                 </div>
                 <hr>
                 <div>
                     <h5 class="text-muted text-center fs-3 fw-semibold">Tether TRC-20</h5>
-                    <p class="rounded p-1 bg-success text-success bg-opacity-10 text-center">TKLfH26wEGyphRJzMP1t6Q1pBDC3JNgQ1x</p>
+                    <p class="rounded p-1 bg-success text-success bg-opacity-10 text-center"><?= $data->WAddress ?></p>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">

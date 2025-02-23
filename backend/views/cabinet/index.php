@@ -164,10 +164,10 @@ $this->params['breadcumbs'][] = $this->title;
     <div class="col-sm-6 col-xl-12">
         <h4>Affiliate activity</h4>
         <div class="bg-vertical-gradient-2 rounded p-4 text-center mb-4">
-            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TKLfH26wEGyphRJzMP1t6Q1pBDC3JNgQ1x" alt=""></p>
-            <a href="#" data-copy-text="https://sirius-energy.co/?ref=admin@sirius-energy.co" class="text-light">
+            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= $data->wAddress ?>" alt=""></p>
+            <a href="#" data-copy-text="https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" class="text-light">
                 <i class="mdi mdi-content-copy"></i>
-                <small>https://sirius-energy.co/?ref=admin@sirius-energy.co</small>
+                <small>https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?></small>
             </a>
         </div>
 
@@ -180,11 +180,11 @@ $this->params['breadcumbs'][] = $this->title;
                 </div>
                 <div class="d-flex mb-2">
                     <div class="flex-grow-1">Income by level</div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"></div>
+                    <div class="flex-shrink-0 fw-semibold ms-2">3% &ndash; 3%</div>
                 </div>
                 <div class="d-flex mb-2">
                     <div class="flex-grow-1">Prize received</div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"></div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->rankBonus ?></div>
                 </div>
                 <div class="d-flex mb-2">
                     <div class="flex-grow-1">Turnover to next rank</div>
