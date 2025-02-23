@@ -1,12 +1,16 @@
 <?php
 /** @var yii\web\View $this */
 
+use yii\helpers\Url;
+
 $this->title = Yii::t('app', 'Cabinet');
 $this->params['breadcumbs'][] = $this->title;
 
 ?>
-<h4>Personal account</h4>
+<div class="row">
+    <div class="col-sm-12 col-xl-9 col-xxl-10">
 
+<h4>Personal account</h4>
 <div class="row">
     <div class="col-xl-12">
         <div class="card crm-widget">
@@ -20,7 +24,7 @@ $this->params['breadcumbs'][] = $this->title;
                                     <i class="ri-space-ship-line display-6 text-muted"></i>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h3 class="mb-0">$<span class="counter-value" data-target="<?= $data->Investment ?>">0</span></h3>
+                                    <h3 class="mb-0">$<span class="counter-value" data-target="<?= $data->investment ?>">0</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +37,7 @@ $this->params['breadcumbs'][] = $this->title;
                                     <i class="ri-exchange-dollar-line display-6 text-muted"></i>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h3 class="mb-0">$<span class="counter-value" data-target="489.4">0</span></h3>
+                                    <h3 class="mb-0">$<span class="counter-value" data-target="<?= $data->investBonus ?>">0</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +50,7 @@ $this->params['breadcumbs'][] = $this->title;
                                     <i class="ri-pulse-line display-6 text-muted"></i>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h3 class="mb-0">$<span class="counter-value" data-target="32.89">0</span></h3>
+                                    <h3 class="mb-0">$<span class="counter-value" data-target="<?= $data->directBonus ?>">0</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -59,13 +63,13 @@ $this->params['breadcumbs'][] = $this->title;
                                     <i class="ri-trophy-line display-6 text-muted"></i>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h3 class="mb-0">$<span class="counter-value" data-target="1596.5">0</span></h3>
+                                    <h3 class="mb-0">$<span class="counter-value" data-target="<?= $data->totalBonus ?>">0</span></h3>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end card body -->
+                    </div>
+                </div>
+            </div>
         </div><!-- end card -->
     </div><!-- end col -->
 </div><!-- end row -->
@@ -75,16 +79,154 @@ $this->params['breadcumbs'][] = $this->title;
         
         <div class="card">
             <div class="card-header"><h4  class="card-title">Account statistics</h4></div>
-            <div class="card-body">&nbsp;</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 border-end">
+                        <h4 class="mb-5">Available balance</h4>
+                        <h3 class="text-success">$<?= $data->investBonus ?></h3>
+                        <div class="fs-6 text-success fw-semibold"><?= $data->refBalance ?> USDT Ref. balance </div>
+                        <div class="text-center mt-5"><a href="<?= Url::to(['cabinet/wallet'])?>" class="btn btn-success d-block">Top up balance</a></div>
+                    </div>
+                    <div class="col-6">
+                        <div class="">
+                            <h5 class="fs-6 fw-medium">Top-up amount</h5>
+                            <div class="mb-4 fw-semibold">$<?= $data->getCashInSum() ?></div>
+                        </div>
+                        <div class="">
+                            <h5 class="fs-6 fw-medium">Amount of withdrawals</h5>
+                            <div class="mb-4 fw-semibold">$<?= $data->getCashOutSum() ?></div>
+                        </div>
+                        <div class="">
+                            <h5 class="fs-6 fw-medium">Waiting for withdrawal</h5>
+                            <div class="mb-4 fw-semibold">$<?= $data->getCashAwait() ?></div>
+                        </div>
+                        <div>
+                            <h5 class="fs-6 fw-medium">Main currency</h5>
+                            <div class="fw-semibold"><img class="avatar-xxs" src="/images/svg/crypto-icons/usdt.svg"> Tether (TRC-20)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-sm-12 col-lg-6">
         <div class="card">
             <div class="card-header"><h4  class="card-title">Investment statistics</h4></div>
-            <div class="card-body">&nbsp;</div>
+            <div class="card-body">
+                <div class="d-flex mb-4">
+                    <div class="bg-success-subtle text-center w-50 p-2 rounded">
+                        <img class="avatar-sm" src="/images/svg/crypto-icons/usdt.svg" alt="USDT">
+                        <h4 class="fw-medium"><?= $data->investment ?> USDT</h4>
+                        <small class="text-muted">Total amount of deposits</small>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class=""><?= $data->investBonus ?> USDT</h5>
+                        <div class="text-muted">Dividends received</div>
+                        <hr>
+                        <div class="text-success fw-semibold">~ <?= $data->investBonusWeek ?> USDT</div>
+                        <div class="text-muted">Next accrual</div>
+                    </div>
+                </div>
+
+                <div class="mb-2">Payback: <span class="fw-semibold"><?= $data->investBonus ?> of <?= $data->investment ?> USDT</span></div>
+                <div class="progress progress-xl">
+                    <div class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: <?= $data->progressValue ?>%;"
+                        aria-valuenow="<?= $data->investBonus ?>"
+                        aria-valuemin="0"
+                        aria-valuemax="<?= $data->investment ?>"><?= $data->progressValue ?>%</div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4 text-center">
+                        <h4 class="fw-semibold fs-6 text-success">~<?= $data->getInvestBonusWeek() ?> USDT</h4>
+                        <small class="text-muted">Weekly profitability</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="fw-semibold fs-6 text-success">~<?= $data->getInvestBonusMonth() ?> USDT</h4>
+                        <small class="text-muted">Monthly profitability</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="fw-semibold fs-6 text-success">~<?= $data->getInvestBonusYear() ?> USDT</h4>
+                        <small class="text-muted">Annual profitability</small>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 
+    </div><!-- end left col -->
+    <div class="col-sm-12 col-xl-3 col-xxl-2">
 
+<div class="row">
+    <div class="col-sm-6 col-xl-12">
+        <h4>Affiliate activity</h4>
+        <div class="bg-vertical-gradient-2 rounded p-4 text-center mb-4">
+            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=TKLfH26wEGyphRJzMP1t6Q1pBDC3JNgQ1x" alt=""></p>
+            <a href="#" data-copy-text="https://sirius-energy.co/?ref=admin@sirius-energy.co" class="text-light">
+                <i class="mdi mdi-content-copy"></i>
+                <small>https://sirius-energy.co/?ref=admin@sirius-energy.co</small>
+            </a>
+        </div>
 
+        <div class="card">
+            <div class="card-header"><h5 class="card-title">Ranking system</h5></div>
+            <div class="card-body">
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">Account Status</div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->rankTitle ?></div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">Income by level</div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"></div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">Prize received</div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"></div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">Turnover to next rank</div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->turnoverToNextRank ?></div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">Deposit up to next rank</div>
+                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->depositUpToNextRank ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-12">
+        <h4>Statistics</h4>
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex my-2">
+                    <div class="flex-grow-1"><div class="fw-semibold">Total partners</div><small></small></div>
+                    <div class="flex-shrink-0 text-succes ms-2s"><?= $data->totalCount ?></div>
+                </div>
+                <div class="d-flex my-2">
+                    <div class="flex-grow-1"><div class="fw-semibold">Active partners</div><small></small></div>
+                    <div class="flex-shrink-0 text-succes ms-2s"><?= $data->activeCount ?></div>
+                </div>
+                <div class="d-flex my-2">
+                    <div class="flex-grow-1"><div class="fw-semibold">Personal partners</div><small></small></div>
+                    <div class="flex-shrink-0 text-succes ms-2s"><?= $data->refCount ?></div>
+                </div>
+                <div class="d-flex my-2">
+                    <div class="flex-grow-1"><div class="fw-semibold">Partner turnover</div><small>General investments</small></div>
+                    <div class="flex-shrink-0 text-success ms-2">$<?= $data->getTotalStructInvestment() ?></div>
+                </div>
+                <div class="d-flex my-2">
+                    <div class="flex-grow-1"><div class="fw-semibold">Transitions</div><small>According to ref. link</small></div>
+                    <div class="flex-shrink-0 text-succes ms-2s"><?= $data->refCount ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div><!-- end right col -->
+
+</div>

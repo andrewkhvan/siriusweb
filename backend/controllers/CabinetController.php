@@ -25,7 +25,10 @@ class CabinetController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $data = Api::request($func = 'info');
+        // $data = Api::request($func = 'info');
+        $data = new \backend\models\Dashboard;
+
+        $data->apiLoad();
 
         return $this->render('index', [
             'data' => $data,
