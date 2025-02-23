@@ -104,7 +104,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         }
 
         return null;
-    } 
+    }
 
     /**
      * {@inheritdoc}
@@ -139,5 +139,15 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+
+    public function getAvatarUrl()
+    {
+        return '/images/users/user-dummy-img.jpg';
+    }
+
+    public function getRankTitle()
+    {
+        return 'Rank-' . $this->rank;
     }
 }
