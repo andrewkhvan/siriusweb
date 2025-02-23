@@ -9,6 +9,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $id;
     public $email;
     public $username;
+    public $fullName;
     public $password;
     public $authKey;
     public $accessToken;
@@ -92,6 +93,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
                 'id' => $data->PartnerId,
                 'email' => $data->Email,
                 'username' => $data->Email,
+                'fullName' => $data->Name,
                 'rank' => $data->Rank,
                 'balance' => $data->Balance,
                 'ref_balance' => $data->RefBalance,

@@ -23,13 +23,11 @@ $user = Yii::$app->user->identity;
         <!--end col-->
         <div class="col">
             <div class="p-2">
-                <h3 class="text-white mb-1"><?= $user->username ?></h3>
+                <h3 class="text-white mb-1"><?= $user->fullName ?></h3>
                 <p class="text-white text-opacity-75"><?= $user->rankTitle ?></p>
                 <div class="hstack text-white-50 gap-1">
-                    <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>California,
-                        United States</div>
-                    <div><i class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>Themesbrand
-                    </div>
+                    <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>Almaty, Kazakhstan</div>
+                    <div><i class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>Sirius Energy</div>
                 </div>
             </div>
         </div>
@@ -69,17 +67,12 @@ $user = Yii::$app->user->identity;
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-14" data-bs-toggle="tab" href="#activities" role="tab">
-                            <i class="ri-list-unordered d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Activities</span>
+                            <i class="ri-list-unordered d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">History</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
-                            <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Projects</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents" role="tab">
-                            <i class="ri-folder-4-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Documents</span>
+                            <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Achievements</span>
                         </a>
                     </li>
                 </ul>
@@ -111,7 +104,7 @@ $user = Yii::$app->user->identity;
                                             <tbody>
                                                 <tr>
                                                     <th class="ps-0" scope="row">Full Name :</th>
-                                                    <td class="text-muted">Anna Adame</td>
+                                                    <td class="text-muted"><?= $user->fullName ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">Mobile :</th>
@@ -119,12 +112,11 @@ $user = Yii::$app->user->identity;
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">E-mail :</th>
-                                                    <td class="text-muted">daveadame@velzon.com</td>
+                                                    <td class="text-muted"><?= $user->email ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">Location :</th>
-                                                    <td class="text-muted">California, United States
-                                                    </td>
+                                                    <td class="text-muted">Almaty, Kazakhstan</td>
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">Joining Date</th>
@@ -368,7 +360,7 @@ $user = Yii::$app->user->identity;
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden">
                                                     <p class="mb-1">Website :</p>
-                                                    <a href="#" class="fw-semibold">www.velzon.com</a>
+                                                    <a href="#" class="fw-semibold">www.sirius-energy.co</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1332,7 +1324,7 @@ $user = Yii::$app->user->identity;
                 <div class="tab-pane fade" id="activities" role="tabpanel">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">Activities</h5>
+                            <h5 class="card-title mb-3">History</h5>
                             <div class="acitivity-timeline">
                                 <div class="acitivity-item d-flex">
                                     <div class="flex-shrink-0">
@@ -2115,247 +2107,6 @@ $user = Yii::$app->user->identity;
                         <!--end card-body-->
                     </div>
                     <!--end card-->
-                </div>
-                <!--end tab-pane-->
-                <div class="tab-pane fade" id="documents" role="tabpanel">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-4">
-                                <h5 class="card-title flex-grow-1 mb-0">Documents</h5>
-                                <div class="flex-shrink-0">
-                                    <input class="form-control d-none" type="file" id="formFile">
-                                    <label for="formFile" class="btn btn-danger"><i class="ri-upload-2-fill me-1 align-bottom"></i> Upload
-                                        File</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless align-middle mb-0">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th scope="col">File Name</th>
-                                                    <th scope="col">Type</th>
-                                                    <th scope="col">Size</th>
-                                                    <th scope="col">Upload Date</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-primary-subtle text-primary rounded fs-20">
-                                                                    <i class="ri-file-zip-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0)">Artboard-documents.zip</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Zip File</td>
-                                                    <td>4.57 MB</td>
-                                                    <td>12 Dec 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink15" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink15">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
-                                                                </li>
-                                                                <li class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-danger-subtle text-danger rounded fs-20">
-                                                                    <i class="ri-file-pdf-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0);">Bank
-                                                                        Management System</a></h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>PDF File</td>
-                                                    <td>8.89 MB</td>
-                                                    <td>24 Nov 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink3" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink3">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
-                                                                </li>
-                                                                <li class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-secondary-subtle text-secondary rounded fs-20">
-                                                                    <i class="ri-video-line"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0);">Tour-video.mp4</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>MP4 File</td>
-                                                    <td>14.62 MB</td>
-                                                    <td>19 Nov 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink4" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink4">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
-                                                                </li>
-                                                                <li class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-success-subtle text-success rounded fs-20">
-                                                                    <i class="ri-file-excel-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0);">Account-statement.xsl</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>XSL File</td>
-                                                    <td>2.38 KB</td>
-                                                    <td>14 Nov 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink5" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink5">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle text-muted"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle text-muted"></i>Download</a>
-                                                                </li>
-                                                                <li class="dropdown-divider"></li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle text-muted"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-info-subtle text-info rounded fs-20">
-                                                                    <i class="ri-folder-line"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0);">Project
-                                                                        Screenshots Collection</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Floder File</td>
-                                                    <td>87.24 MB</td>
-                                                    <td>08 Nov 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink6" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink6">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle"></i>Download</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm">
-                                                                <div class="avatar-title bg-danger-subtle text-danger rounded fs-20">
-                                                                    <i class="ri-image-2-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-3 flex-grow-1">
-                                                                <h6 class="fs-15 mb-0"><a href="javascript:void(0);">Velzon-logo.png</a>
-                                                                </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>PNG File</td>
-                                                    <td>879 KB</td>
-                                                    <td>02 Nov 2021</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <a href="javascript:void(0);" class="btn btn-light btn-icon" id="dropdownMenuLink7" data-bs-toggle="dropdown" aria-expanded="true">
-                                                                <i class="ri-equalizer-fill"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink7">
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill me-2 align-middle"></i>View</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-download-2-fill me-2 align-middle"></i>Download</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-line me-2 align-middle"></i>Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="text-center mt-3">
-                                        <a href="javascript:void(0);" class="text-success "><i class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i>
-                                            Load more </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!--end tab-pane-->
             </div>

@@ -107,14 +107,14 @@ use yii\helpers\Url;
                         <span class="d-flex align-items-center">
                             <i class="mdi mdi-account-circle text-muted mdi-36px"></i>
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= Yii::$app->user->identity->username ?></span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= Yii::$app->user->identity->fullName ?></span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Rank-<?= Yii::$app->user->identity->rank ?></span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome <?= Yii::$app->user->identity->username ?>!</h6>
+                        <h6 class="dropdown-header">Welcome <?= Yii::$app->user->identity->fullName ?>!</h6>
                         <a class="dropdown-item" href="<?= Url::to(['user/index']) ?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                         <a class="dropdown-item" href="pages-faqs"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
                         <div class="dropdown-divider"></div>
