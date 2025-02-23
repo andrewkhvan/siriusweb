@@ -73,12 +73,6 @@ use yii\helpers\Url;
                         <span data-key="t-team"><?= Yii::t('app', 'Team') ?></span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= Url::to('/cabinet/promo') ?>" class="nav-link">
-                        <i class="mdi mdi-medal"></i>
-                        <span data-key="t-promo"><?= Yii::t('app', 'Promo') ?></span>
-                    </a>
-                </li>
 
             </ul>
         </div>
