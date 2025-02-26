@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="row">
-    <div class="col-sm-12 col-lg-4">
+    <div class="col-sm-12 col-lg-3">
         <!-- card -->
         <div class="card">
             <div class="card-body">
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div><!-- end col -->
 
-    <div class="col-sm-12 col-lg-8">
+    <div class="col-sm-12 col-lg-9">
         <!-- card -->
         <div class="card">
             <div class="card-body" id="team-group">
