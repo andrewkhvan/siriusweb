@@ -60,7 +60,29 @@ class CabinetController extends \yii\web\Controller
 
     public function actionTeam()
     {
-        return $this->render('team');
+        $info = new \backend\models\Dashboard;
+        $info->apiLoad();
+
+        $data = Api::request('tree');
+
+        return $this->render('team', [
+            'info' => $info,
+            'data' => $data,
+        ]);
+    }
+
+    public function actionTeamSubgroup()
+    {
+        if (Yii::$app->request->isAjax) {
+            $partner_id = (int) Yii::$app->request->post('partner_id');
+
+            $data = Api::request('tree', ['PartnerId' => $partner_id]);
+            return $this->renderPartial('team_subgroup', [
+                'data' => $data,
+            ]);
+        }
+
+        return new \yii\web\BadRequestHttpException();
     }
 
     public function actionTransactions()
