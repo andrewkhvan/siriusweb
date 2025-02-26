@@ -19,7 +19,10 @@
         </div>
     </div>
 <?php if ($member->HasChildren): ?>
-    <div class="collapse" id="children-<?= $member->PartnerId?>"></div>
+    <div class="collapse" id="children-<?= $member->PartnerId?>">
+        <h5 class="text-center text-muted">Loading...</h5>
+        <h4 class="my-4 text-center"><i class="bx bx-loader bx-spin"></i></h4>
+    </div>
 <?php endif; ?>
 </div>
 <?php endforeach; ?>
