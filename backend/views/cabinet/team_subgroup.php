@@ -10,7 +10,7 @@
             <p>Invested <?= number_format($member->InvestmentValue, 2, '.', ' ') ?></p>
         </div>
         <div class="flex-shrink-0 ms-2 text-end">
-            <div class="mb-2 text-muted fs-11">Level <?= $member->Level ?></div>
+            <div class="mb-2 text-muted fs-10"><small>Level <?= $member->Level ?></small></div>
         <?php if ($member->HasChildren): ?>
             <a href="#" data-bs-toggle="collapse" data-bs-target="#children-<?= $member->PartnerId?>" data-id="<?= $member->PartnerId ?>" class="toggle-subgroup">
                 <i class="mdi mdi-plus-box-outline mdi-24px"></i>
