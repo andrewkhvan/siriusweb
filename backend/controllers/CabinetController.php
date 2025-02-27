@@ -87,10 +87,23 @@ class CabinetController extends \yii\web\Controller
 
     public function actionTransactions()
     {
-        $data = Api::request('transactions', ['pageNo' => 1]);
+        $params = $this->request->queryParams;
+
+        if (isset($params['filter'])) {
+            $params['filter'] = (int) $params['filter'];
+        }
+
+        $data = Api::request('transactions', $params);
+
+        $pages = new \yii\data\Pagination([
+            'totalCount' => $data->total,
+            'defaultPageSize' => 50,
+            'pageParam' => 'pageNo',
+        ]);
 
         return $this->render('transactions', [
-            'data' => $data
+            'data' => $data,
+            'pages' => $pages,
         ]);
     }
 
