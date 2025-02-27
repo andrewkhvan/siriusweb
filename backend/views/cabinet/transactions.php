@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card">
     <div class="card-body">
 
+<?= $this->render('_search') ?>
+
 <div class="dataTables_wrapper">
     <table class="table">
         <thead>

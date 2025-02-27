@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use backend\models\Api;
+use backend\models\Transaction;
 
 class CabinetController extends \yii\web\Controller
 {
