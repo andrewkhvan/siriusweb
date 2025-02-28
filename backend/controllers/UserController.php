@@ -16,7 +16,15 @@ class UserController extends \yii\web\Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['index', 'update'],
                         'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['operations'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin;
+                        },
                     ],
                 ],
             ],
