@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'disabledPageCssClass' => 'disabled page-link',
             ]) ?>
         </div>
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 mb-2">
             <?= $this->render('_search') ?>
         </div>
     </div>
