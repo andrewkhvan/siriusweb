@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use backend\models\OperationSearch;
+use backend\models\Api;
 
 class UserController extends \yii\web\Controller
 {
@@ -21,7 +22,7 @@ class UserController extends \yii\web\Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['operations'],
+                        'actions' => ['operations', 'operation-view', 'operation-create'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
                         },
@@ -44,7 +45,7 @@ class UserController extends \yii\web\Controller
     public function actionOperations()
     {
         $searchParams = Yii::$app->request->queryParams;
-        $data = \backend\models\Api::request('operations', $searchParams);
+        $data = Api::request('operations', $searchParams);
 
         // $searchModel = new OperationSearch;
 
@@ -69,4 +70,22 @@ class UserController extends \yii\web\Controller
             'pages' => $pages,
         ]);
     }
+
+    public function actionOperationView()
+    {
+        if (! Yii::$app->request->isAjax) {
+            throw new \yii\web\BadRequestHttpException;
+            exit;
+        }
+
+        $docno = Yii::$app->request->post('docnum');
+        $data = Api::request('getoperation', ['docno' => (int) $docno]);
+
+        return $this->renderPartial('modal/op_view', [
+            'data' => $data,
+        ]);
+    }
+
+    public function actionOperationCreate()
+    {}
 }

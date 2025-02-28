@@ -32,11 +32,24 @@ $this->title = Yii::t('app', 'Operations');
             'layout' => "{items}",
             'columns' => [
                 'Date:datetime',
-                'DocNo',
+                [
+                    'attribute' => 'DocNo',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        return Html::a($model->DocNo, '#', [
+                            'class'=>'text-primary',
+                            'data' => [
+                                'bs-toggle' => 'modal',
+                                'bs-target' => '#modal-view',
+                                'bs-optitle' => $model->DocNo,
+                            ],
+                        ]); 
+                    },
+                ],
                 'Status',
                 'Operation',
                 'DocSum',
-                'PartnerId',
+                // 'PartnerId',
                 'PartnerName',
                 'PartnerEmail',
                 'Investment',
@@ -51,3 +64,21 @@ $this->title = Yii::t('app', 'Operations');
         <?php Pjax::end(); ?>
     </div>
 </div>
+
+<div class="modal fade" id="modal-view" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span data-key="t-view-op">Operation</span> <span id="op-num"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center"><i class="mdi mdi-loading mdi-spin mdi-36px"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+
+$this->registerJsFile('@web/js/operations.js', ['depends' => \yii\web\JqueryAsset::class]);
