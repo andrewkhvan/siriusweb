@@ -90,11 +90,11 @@ class CabinetController extends \yii\web\Controller
     {
         $params = $this->request->queryParams;
 
-        if (isset($params['filter'])) {
-            $params['filter'] = (int) $params['filter'];
-        }
-
         $data = Api::request('transactions', $params);
+
+        $dataProvider = new \yii\data\ArrayDataProvider([
+            'allModels' => $data->rows,
+        ]);
 
         $pages = new \yii\data\Pagination([
             'totalCount' => $data->total,
@@ -103,7 +103,7 @@ class CabinetController extends \yii\web\Controller
         ]);
 
         return $this->render('transactions', [
-            'data' => $data,
+            'dataProvider' => $dataProvider,
             'pages' => $pages,
         ]);
     }
