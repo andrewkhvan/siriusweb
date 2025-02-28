@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-4"><p class="fw-bold text-end">Investment</p></div>
     <div class="col-8">
-        <p><i class="mdi mdi-18px mdi-checkbox-<?= $data->Investment ? 'marked':'blank' ?>-outline"></i></p>
+        <p><?= $data->Investment ?></p>
     </div>
 </div>
 <div class="row">
@@ -40,7 +40,7 @@
 </div>
 <div class="row">
     <div class="col-4"><p class="fw-bold text-end">Virtual</p></div>
-    <div class="col-8"><p><?= $data->Virtual ?></p></div>
+    <div class="col-8"><p><i class="mdi mdi-18px mdi-checkbox-<?= $data->Virtual ? 'marked':'blank' ?>-outline"></i></p></div>
 </div>
 <div class="row">
     <div class="col-4"><p class="fw-bold text-end">WAddress</p></div>
