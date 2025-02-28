@@ -14,6 +14,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
     public $rank;
+    public $isAdmin;
     public $balance;
     public $ref_balance;
 
@@ -99,8 +100,9 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
                 'ref_balance' => $data->RefBalance,
                 'authKey' => md5('authKey_' . $data->PartnerId),
                 'accessToken' => md5('accessToken_' . $data->PartnerId),
+                'isAdmin' => $data->IsAdmin,
             ];
-            Yii::$app->session->set('user', $user);
+            // Yii::$app->session->set('user', $user);
 
             return new static($user);
         }

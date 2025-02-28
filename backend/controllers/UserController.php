@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
+use Yii;
 use yii\filters\AccessControl;
+use backend\models\OperationSearch;
 
 class UserController extends \yii\web\Controller
 {
@@ -31,4 +33,32 @@ class UserController extends \yii\web\Controller
         return $this->render('update');
     }
 
+    public function actionOperations()
+    {
+        $searchParams = Yii::$app->request->queryParams;
+        $data = \backend\models\Api::request('operations', $searchParams);
+
+        // $searchModel = new OperationSearch;
+
+        // $dataProvider = $searchModel->search($searchParams);
+        $dataProvider = new \yii\data\ArrayDataProvider([
+            'allModels' => $data->rows,
+            'pagination' => [
+                'pageSize' => 50,
+            ],
+        ]);
+
+
+        $pages = new \yii\data\Pagination([
+            'defaultPageSize' => 50,
+            'totalCount' => $data->total,
+            'pageParam' => 'pageNo',
+        ]);
+
+        return $this->render('operations', [
+            // 'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'pages' => $pages,
+        ]);
+    }
 }

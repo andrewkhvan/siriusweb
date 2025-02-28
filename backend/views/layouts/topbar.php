@@ -119,6 +119,9 @@ use yii\helpers\Url;
                         <a class="dropdown-item" href="pages-faqs"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= Url::to(['cabinet/wallet']) ?>"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$<?= Yii::$app->user->identity->balance ?></b></span></a>
+                        <?php if (Yii::$app->user->identity->isAdmin): ?>
+                            <a class="dropdown-item text-warning-emphasis" href="<?= Url::to(['user/operations']) ?>"><i class="mdi mdi-flash fs-16 align-middle me-1"></i> <span class="align-middle">Operations</span></a>
+                        <?php endif; ?>
                         <a class="dropdown-item" href="<?= Url::to(['user/update']) ?>"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
                         <span class="dropdown-item">
                         <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'form-inline']) ?>
