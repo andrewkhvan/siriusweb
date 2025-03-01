@@ -157,6 +157,47 @@ $this->params['breadcumbs'][] = $this->title;
     </div>
 </div>
 
+<div class="row">
+
+    <div class="col-sm-12">
+        <div class="card card-height-100">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Balance Overview</h4>
+                <div class="flex-shrink-0">
+                    <div class="dropdown card-header-dropdown">
+                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="fw-semibold text-uppercase fs-13">Sort by: </span><span class="text-muted">Current Year<i class="mdi mdi-chevron-down ms-1"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Today</a>
+                            <a class="dropdown-item" href="#">Last Week</a>
+                            <a class="dropdown-item" href="#">Last Month</a>
+                            <a class="dropdown-item" href="#">Current Year</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card header -->
+            <div class="card-body px-0">
+                <ul class="list-inline main-chart text-center mb-0">
+                    <li class="list-inline-item chart-border-left me-0 border-0">
+                        <h4 class="text-primary">$584k <span class="text-muted d-inline-block fs-13 align-middle ms-2">Revenue</span></h4>
+                    </li>
+                    <li class="list-inline-item chart-border-left me-0">
+                        <h4>$497k<span class="text-muted d-inline-block fs-13 align-middle ms-2">Expenses</span>
+                        </h4>
+                    </li>
+                    <li class="list-inline-item chart-border-left me-0">
+                        <h4><span data-plugin="counterup">3.6</span>%<span class="text-muted d-inline-block fs-13 align-middle ms-2">Profit Ratio</span></h4>
+                    </li>
+                </ul>
+
+                <div id="revenue-expenses-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
+            </div>
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+</div>
+
     </div><!-- end left col -->
     <div class="col-sm-12 col-xl-3 col-xxl-2">
 
@@ -230,3 +271,8 @@ $this->params['breadcumbs'][] = $this->title;
     </div><!-- end right col -->
 
 </div>
+<?php
+
+$this->registerCssFile('/libs/apexcharts/apexcharts.css');
+$this->registerJsFile('/libs/apexcharts/apexcharts.min.js');
+$this->registerJsFile('/js/cab_index.js');
