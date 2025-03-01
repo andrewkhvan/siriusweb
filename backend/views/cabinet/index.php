@@ -163,19 +163,6 @@ $this->params['breadcumbs'][] = $this->title;
         <div class="card card-height-100">
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Balance Overview</h4>
-                <div class="flex-shrink-0">
-                    <div class="dropdown card-header-dropdown">
-                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fw-semibold text-uppercase fs-13">Sort by: </span><span class="text-muted">Current Year<i class="mdi mdi-chevron-down ms-1"></i></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="#">Today</a>
-                            <a class="dropdown-item" href="#">Last Week</a>
-                            <a class="dropdown-item" href="#">Last Month</a>
-                            <a class="dropdown-item" href="#">Current Year</a>
-                        </div>
-                    </div>
-                </div>
             </div><!-- end card header -->
             <div class="card-body px-0">
                 <div id="bonus-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
