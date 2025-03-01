@@ -178,20 +178,7 @@ $this->params['breadcumbs'][] = $this->title;
                 </div>
             </div><!-- end card header -->
             <div class="card-body px-0">
-                <ul class="list-inline main-chart text-center mb-0">
-                    <li class="list-inline-item chart-border-left me-0 border-0">
-                        <h4 class="text-primary">$584k <span class="text-muted d-inline-block fs-13 align-middle ms-2">Revenue</span></h4>
-                    </li>
-                    <li class="list-inline-item chart-border-left me-0">
-                        <h4>$497k<span class="text-muted d-inline-block fs-13 align-middle ms-2">Expenses</span>
-                        </h4>
-                    </li>
-                    <li class="list-inline-item chart-border-left me-0">
-                        <h4><span data-plugin="counterup">3.6</span>%<span class="text-muted d-inline-block fs-13 align-middle ms-2">Profit Ratio</span></h4>
-                    </li>
-                </ul>
-
-                <div id="revenue-expenses-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
+                <div id="bonus-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
             </div>
         </div><!-- end card -->
     </div><!-- end col -->
@@ -275,4 +262,4 @@ $this->params['breadcumbs'][] = $this->title;
 
 $this->registerCssFile('/libs/apexcharts/apexcharts.css');
 $this->registerJsFile('/libs/apexcharts/apexcharts.min.js');
-$this->registerJsFile('/js/cab_index.js');
+$this->registerJsFile('/js/cab_index.js', ['depends' => \yii\web\JqueryAsset::class]);

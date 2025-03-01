@@ -36,6 +36,19 @@ class CabinetController extends \yii\web\Controller
         ]);
     }
 
+    public function actionIndexChart()
+    {
+        if (! Yii::$app->request->isAjax) {
+            throw new \yii\web\BadRequestHttpException;
+            exit;
+        }
+
+        $chart = new \backend\models\ApexChart;
+        $data = $chart->apiLoad();
+
+        return json_encode($data);
+    }
+
     public function actionDeposits()
     {
         $data = Api::request($func = 'deposits');
