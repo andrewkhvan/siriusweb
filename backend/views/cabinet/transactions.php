@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="flex-grow-1">
             <?= $pager = LinkPager::widget([
                 'pagination' => $pages,
+                'maxButtonCount' => 5,
                 'pageCssClass' => 'page-item',
                 'linkOptions' => ['class' => 'page-link'],
                 'disabledPageCssClass' => 'disabled page-link',
@@ -28,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'layout' => "{items}",
@@ -39,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'refPartner',
         ],
     ]) ?>
+    </div>
 
     <?= $pager ?>
 

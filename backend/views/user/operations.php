@@ -17,6 +17,7 @@ $this->title = Yii::t('app', 'Operations');
             <div class="flex-grow-1">
             <?= $linkPager = LinkPager::widget([
                 'pagination' => $pages,
+                'maxButtonCount' => 5,
                 'pageCssClass' => 'page-item',
                 'linkOptions' => ['class' => 'page-link'],
                 'disabledPageCssClass' => 'disabled page-link',
@@ -27,6 +28,7 @@ $this->title = Yii::t('app', 'Operations');
             </div>
         </div>
 
+        <div class="table-responsive">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'layout' => "{items}",
@@ -58,6 +60,7 @@ $this->title = Yii::t('app', 'Operations');
                 'WAddress',
             ],
         ]) ?>
+        </div>
 
         <?= $linkPager ?>
 
