@@ -6,7 +6,7 @@
         </div>
         <div class="flex-grow-1">
             <h5 class="fs-14"><?= $member->Name ?> <span class="text-muted ps-2">Rank-<?= $member->Rank ?></span></h5>
-            <div class="text-muted mb-2"><?= date('Y-m-d H:i:s', $member->RegistrationDate) ?></div>
+            <div class="text-muted mb-2"><?= date('M d, Y', $member->RegistrationDate) ?></div>
             <p>Invested <?= number_format($member->InvestmentValue, 2, '.', ' ') ?></p>
         </div>
         <div class="flex-shrink-0 ms-2 text-end">

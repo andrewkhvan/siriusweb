@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="flex-grow-1">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= $data->WAddress ?>" alt="">
                     </div>
-                    <div class="flex-shrink-0">
+                    <div class="flex-shrink-0 ms-3">
                         <h4 class="mb-0">
                             <img class="avatar-xxs" src="/images/svg/crypto-icons/usdt.svg" alt="USDT">
                             <?= $data->Balance ?> USDT

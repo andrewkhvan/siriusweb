@@ -162,7 +162,7 @@ $this->params['breadcumbs'][] = $this->title;
     <div class="col-sm-12">
         <div class="card card-height-100">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Balance Overview</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Income growth</h4>
             </div><!-- end card header -->
             <div class="card-body px-0">
                 <div id="bonus-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
