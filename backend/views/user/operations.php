@@ -72,8 +72,8 @@ $this->title = Yii::t('app', 'Operations');
                 <h5 class="modal-title"><span data-key="t-view-op">Operation</span> <span id="op-num"></span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center"><i class="mdi mdi-loading mdi-spin mdi-36px"></i></div>
+            <div class="modal-body" id="op-body">
+                <div class="text-center my-5 py-5"><i class="mdi mdi-loading mdi-spin mdi-36px"></i></div>
             </div>
         </div>
     </div>
