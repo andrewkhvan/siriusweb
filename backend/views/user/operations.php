@@ -24,6 +24,9 @@ $this->title = Yii::t('app', 'Operations');
             ]) ?>
             </div>
             <div class="flex-shrink-0">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create"><?= Yii::t('app', 'New operation') ?></button>
+            </div>
+            <div class="flex-shrink-0 ms-2">
                 <?= $this->render('_search'); ?>
             </div>
         </div>
@@ -81,6 +84,8 @@ $this->title = Yii::t('app', 'Operations');
         </div>
     </div>
 </div>
+
+<?= $this->render('modal/op_create', ['model' => $createForm]) ?>
 
 <?php
 

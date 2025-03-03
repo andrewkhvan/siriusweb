@@ -23,7 +23,7 @@ class Operation extends \yii\base\Model
             [['Date', 'DocNo', 'DocSum', 'PartnerId', 'Investment'], 'number'],
             [['Operation', 'PartnerName', 'PartnerEmail', 'WAddress'], 'string'],
             [['RefBalance', 'Virtual'], 'boolean'],
-            [['Status'], 'save'],
+            [['Status'], 'safe'],
         ];
     }
 
@@ -34,6 +34,18 @@ class Operation extends \yii\base\Model
             2 => 'Вывод',
             3 => 'Инвестиция',
         ];
+    }
+
+    public static function getInvestmentList()
+    {
+        $data = Api::request('investments');
+        $list = [];
+
+        foreach ($data->rows as $item) {
+            $list[$item->Id] = $item->InvestmentName;
+        }
+
+        return $list;
     }
 
 }

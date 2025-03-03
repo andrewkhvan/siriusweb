@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use backend\models\OperationSearch;
+use backend\models\OperationForm;
 use backend\models\Api;
 
 class UserController extends \yii\web\Controller
@@ -47,8 +47,9 @@ class UserController extends \yii\web\Controller
         $searchParams = Yii::$app->request->queryParams;
         $data = Api::request('operations', $searchParams);
 
-        // $searchModel = new OperationSearch;
+        $createForm = new OperationForm;
 
+        // $searchModel = new OperationSearch;
         // $dataProvider = $searchModel->search($searchParams);
         $dataProvider = new \yii\data\ArrayDataProvider([
             'allModels' => $data->rows,
@@ -65,7 +66,7 @@ class UserController extends \yii\web\Controller
         ]);
 
         return $this->render('operations', [
-            // 'searchModel' => $searchModel,
+            'createForm' => $createForm,
             'dataProvider' => $dataProvider,
             'pages' => $pages,
         ]);
