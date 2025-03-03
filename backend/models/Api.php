@@ -56,6 +56,7 @@ class Api extends \yii\base\Model
                     'Email' => $username,
                     'Password' => $password,
                     'IP' => Yii::$app->request->userIP,
+                    'UserAgent' => Yii::$app->request->userAgent,
                 ],
             ]);
         } catch (RequestException $e) {
