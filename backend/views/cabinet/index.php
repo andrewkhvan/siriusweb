@@ -179,7 +179,7 @@ $this->params['breadcumbs'][] = $this->title;
     <div class="col-sm-6 col-xl-12">
         <h4>Affiliate activity</h4>
         <div class="bg-vertical-gradient-2 rounded p-4 text-center mb-4">
-            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" alt=""></p>
+            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" alt="" class="w-100" style="max-width:160px"></p>
             <a href="#" data-copy-text="https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" class="text-light" id="ref-link">
                 <i class="mdi mdi-content-copy"></i>
                 <small>https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?></small>
