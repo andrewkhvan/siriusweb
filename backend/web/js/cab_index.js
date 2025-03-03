@@ -27,6 +27,15 @@ function getChartColorsArray(chartId) {
     }
 }
 
+(function ($) {
+    $(function () {
+
+$('#ref-link').click(function (e) {
+    e.preventDefault();
+    navigator.clipboard.writeText($(this).attr('data-copy-text'));
+    alert("Copied to clipboard");
+});
+
 // Balance Overview charts
 var bonusChartsColors = getChartColorsArray("bonus-charts");
 if (bonusChartsColors) {
@@ -78,3 +87,6 @@ if (bonusChartsColors) {
     });
 
 }
+
+    })
+})(jQuery);

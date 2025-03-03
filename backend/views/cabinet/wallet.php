@@ -28,7 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <hr>
                 <div>
                     <h5 class="text-muted text-center fs-3 fw-semibold">Tether TRC-20</h5>
-                    <p class="rounded p-1 bg-success text-success bg-opacity-10 text-center"><?= $data->WAddress ?></p>
+                    <p class="rounded p-1 bg-success-subtle text-center">
+                        <a href="#" class="text-success-emphasis" id="copy-waddress" data-copy-text="<?= $data->WAddress ?>">
+                            <i class="mdi mdi-content-copy"></i> <?= $data->WAddress ?>
+                        </a>
+                    </p>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">
@@ -43,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="mt-2">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bx bx-dollar"></i></span>
-                        <input type="password" class="form-control" id="placeholderInput" placeholder="Сумма вывода">
+                        <input class="form-control" id="placeholderInput" placeholder="Сумма вывода">
                     </div>
                 </div>
                 <div class="mt-2">
@@ -60,3 +64,17 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+<?php
+
+$js = <<< JS
+
+$('#copy-waddress').click(function (e) {
+    e.preventDefault();
+    navigator.clipboard.writeText( $(this).attr('data-copy-text') );
+    alert("Copied to clipboard");
+
+});
+
+JS;
+
+$this->registerJs($js);
