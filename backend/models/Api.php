@@ -30,7 +30,7 @@ class Api extends \yii\base\Model
                 'json' => $data,
             ]);
         } catch (RequestException $e) {
-            return [];
+            return (object) ['HasError' => true, 'errorMessage' => 'Request fail'];
         }
 
         $output = $response->getBody()->getContents();

@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use backend\models\Api;
 use backend\models\Transaction;
+use backend\models\InvestForm;;
 
 class CabinetController extends \yii\web\Controller
 {
@@ -64,6 +65,42 @@ class CabinetController extends \yii\web\Controller
 
         return $this->render('investments', [
             'data' => $data,
+        ]);
+    }
+
+    public function actionInvestOpen($id)
+    {
+        $data = Api::request($func = 'investments');
+
+        $model = new \backend\models\InvestForm;
+
+        //get investment by id
+        $invest = null;
+        foreach ($data->rows as $item) {
+            if ($item->Id == $id) {
+                $model->attributes = (array) $item;
+                break;
+            }
+        }
+
+        $model->balance = $data->balance;
+        unset($data);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $result = $model->apiSend();
+            if ($result->HasError) {
+                $model->addError('Amount', $result->errorMessage);
+            } else {
+                return '<p class="text-success text-center">'
+                    . Yii::t('app', 'Request sent')
+                    . '<br><br><button class="btn btn-success" data-bs-dismiss="modal">'
+                    . Yii::t('app', 'Close')
+                    . '</button></p>';
+            }
+        }
+
+        return $this->renderPartial('invest_open', [
+            'model' => $model,
         ]);
     }
 
