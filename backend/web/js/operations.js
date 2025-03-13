@@ -27,5 +27,30 @@
                 })
             })
         }
+
+        // Create operation popup
+        const createOpModal = document.getElementById('modal-create');
+
+        if (createOpModal) {
+            createOpModal.addEventListener('show.bs.modal', event => {
+                
+                // const button = event.relatedTarget;
+                // const invId = button.getAttribute('data-inv-id')
+                const modalBody = createOpModal.querySelector('.modal-body-pjax')
+
+                modalBody.innerHTML = '<p class="text-center fs-1 my-4"><i class="bx bx-loader bx-spin"></i></p>'
+
+                $.ajax({
+                    "method": "get",
+                    "url": "/user/operation-create",
+                    "data": {"task": 'cashin'}
+                }).done(function (data) {
+                    modalBody.innerHTML = data
+                });
+
+            })
+        }
+
+
     })
 })(jQuery);

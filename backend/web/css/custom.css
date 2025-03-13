@@ -3,3 +3,10 @@
     display:none;
   }
 }
+
+.nav-tabs-custom .nav-item.active .nav-link {
+  color: var(--vz-primary);
+}
+.dropdown-head .nav-tabs-custom .active .nav-link {
+  background-color: var(--vz-dropdown-bg);
+}

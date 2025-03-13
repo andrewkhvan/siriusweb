@@ -87,6 +87,20 @@ class UserController extends \yii\web\Controller
         ]);
     }
 
-    public function actionOperationCreate()
-    {}
+    public function actionOperationCreate($task = 'cashin')
+    {
+        $model = new OperationForm(['scenario' => $task]);
+
+        $model->operation = $task;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            // return '<pre>'. print_r($model->attributes, true) .'</pre>';
+            return $this->redirect(['user/operations']);
+        }
+
+        return $this->renderPartial('modal/op_create', [
+            'model' => $model,
+            'scenario' => $model->scenarios()[$task],
+        ]);
+    }
 }

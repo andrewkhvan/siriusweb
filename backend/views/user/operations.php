@@ -85,7 +85,18 @@ $this->title = Yii::t('app', 'Operations');
     </div>
 </div>
 
-<?= $this->render('modal/op_create', ['model' => $createForm]) ?>
+<div class="modal fade" id="modal-create" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body-pjax">
+            <?php Pjax::begin(['options' => ['id' => 'p-1'],]) ?>
+                <p class="text-center fs-1 my-4"><i class="bx bx-loader bx-spin"></i></p>
+            <?php Pjax::end() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php
 
