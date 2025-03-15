@@ -45,7 +45,7 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $auth = Api::auth($this->email, $this->password);
+            $auth = Api::auth($this->email, hash('sha256', $this->password));
 
             if ($auth->HasError) {
                 // $this->addError($attribute, 'Incorrect username or password.');
