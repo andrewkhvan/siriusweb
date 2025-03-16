@@ -8,7 +8,7 @@ use backend\models\Api;
 use backend\models\Transaction;
 use backend\models\InvestForm;;
 
-class CabinetController extends \yii\web\Controller
+class CabinetController extends BaseController
 {
     public function behaviors()
     {

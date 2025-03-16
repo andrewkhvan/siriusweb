@@ -5,7 +5,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
 
-$this->title = 'Transactions';
+$this->title = Yii::t('app', 'Transactions');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -34,11 +34,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'layout' => "{items}",
         'columns' => [
-            'Date:datetime',
-            'Operation',
-            'Bonus',
-            'Sum:integer',
-            'refPartner',
+            [
+                'attribute' => 'Date',
+                'format' => 'datetime',
+                'label' => Yii::t('app', 'Date'),
+            ],
+            [
+                'attribute' => 'Operation',
+                'label' => Yii::t('app', 'Operation'),
+            ],
+            [
+                'attribute' => 'Bonus',
+                'label' => Yii::t('app', 'Bonus'),
+            ],
+            [
+                'attribute' => 'Sum',
+                'format' => 'integer',
+                'label' => Yii::t('app', 'Sum'),
+            ],
+            [
+                'attribute' => 'refPartner',
+                'label' => Yii::t('app', 'Ref. Partner'),
+            ],
         ],
     ]) ?>
     </div>

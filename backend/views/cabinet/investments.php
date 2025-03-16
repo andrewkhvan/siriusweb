@@ -3,7 +3,7 @@
 
 use yii\widgets\Pjax;
 
-$this->title = 'Investment directions';
+$this->title = Yii::t('app', 'Investment directions');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
