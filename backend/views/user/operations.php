@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Operations');
 ?>
 <div class="card">
     <div class="card-body">
-        <?php Pjax::begin(); ?>
+        <?php Pjax::begin(['timeout' => 4000]); ?>
 
         <div class="d-flex">
             <div class="flex-grow-1">
@@ -89,7 +89,10 @@ $this->title = Yii::t('app', 'Operations');
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body-pjax">
-            <?php Pjax::begin(['options' => ['id' => 'p-1'],]) ?>
+            <?php Pjax::begin([
+                'timeout' => 4000,
+                'options' => ['id' => 'p-1'],
+            ]) ?>
                 <p class="text-center fs-1 my-4"><i class="bx bx-loader bx-spin"></i></p>
             <?php Pjax::end() ?>
             </div>

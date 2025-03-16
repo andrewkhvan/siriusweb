@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card">
     <div class="card-body">
 
-<?php Pjax::begin(); ?>
+<?php Pjax::begin(['timeout' => 4000]); ?>
 
     <div class="d-flex">
         <div class="flex-grow-1">
