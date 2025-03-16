@@ -162,8 +162,23 @@ class CabinetController extends \yii\web\Controller
     {
         $data = Api::request('wallet');
 
+        $model = new \backend\models\wallet\CashoutForm;
+
+        $model->amountBalance = $data->Balance;
+        $model->amountRefBalance = $data->RefBalance;
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $result = $model->apiSend();
+            if ($result->HasError) {
+                Yii::$app->session->setFlash('error', $result->errorMessage);
+            } else {
+                Yii::$app->session->setFlash('success', 'Request sent');
+            }
+        }
+
         return $this->render('wallet', [
             'data' => $data,
+            'model' => $model,
         ]);
     }
 
