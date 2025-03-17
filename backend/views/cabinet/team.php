@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="text-center">
                     <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= User::getRefLink() ?>" alt=""></p>
-                    <a href="#" data-copy-text="<?= User::getRefLink() ?>" class="text-muted">
+                    <a href="#" id="ref-link" data-copy-text="<?= User::getRefLink() ?>" class="text-muted">
                         <i class="mdi mdi-content-copy"></i>
                         <small><?= User::getRefLink() ?></small>
                     </a>

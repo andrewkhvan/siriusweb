@@ -23,5 +23,11 @@
             });
         })
 
+        $('#ref-link').click(function (e) {
+            e.preventDefault();
+            navigator.clipboard.writeText($(this).attr('data-copy-text'));
+            alert("Copied to clipboard");
+        });
+        
     })
 })(jQuery);
