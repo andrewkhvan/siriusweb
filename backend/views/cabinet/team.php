@@ -1,7 +1,7 @@
 <?php
 /** @var yii\web\View $this */
 
-$this->title = 'Affiliate team ';
+$this->title = Yii::t('app', 'Affiliate team');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 
 class Transaction extends Model
@@ -33,13 +34,13 @@ class Transaction extends Model
     public static function getFilterList()
     {
         return [
-            1 => 'Начисление дивидендов',
-            2 => 'Direct Bonus',
-            3 => 'Доход от дохода',
-            4 => 'Ранговый бонус',
-            5 => 'Вывод',
-            6 => 'Пополнение',
-            7 => 'Инвестиция',
+            1 => Yii::t('app', 'Dividend accrual'),
+            2 => Yii::t('app', 'Direct Bonus'),
+            3 => Yii::t('app', 'Income by Level'),
+            4 => Yii::t('app', 'Rank Bonus'),
+            5 => Yii::t('app', 'Withdrawal'),
+            6 => Yii::t('app', 'Replenishment'),
+            7 => Yii::t('app', 'Investment'),
         ];
     }
 }

@@ -36,41 +36,41 @@ use yii\helpers\Url;
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="menu-title"><span><?= Yii::t('app', 'Menu') ?></span></li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/index') ?>" class="nav-link">
                         <i class="mdi mdi-card-account-details"></i>
-                        <span data-key="t-cabinet"><?= Yii::t('app', 'Cabinet') ?></span>
+                        <span><?= Yii::t('app', 'Cabinet') ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/wallet') ?>" class="nav-link">
                         <i class="mdi mdi-wallet"></i>
-                        <span data-key="t-wallet"><?= Yii::t('app', 'Wallet') ?></span>
+                        <span><?= Yii::t('app', 'Wallet') ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/transactions') ?>" class="nav-link">
                         <i class="mdi mdi-transfer"></i>
-                        <span data-key="t-transactions"><?= Yii::t('app', 'Transactions') ?></span>
+                        <span><?= Yii::t('app', 'Transactions') ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/deposits') ?>" class="nav-link">
                         <i class="mdi mdi-cash-plus"></i>
-                        <span data-key="t-deposits"><?= Yii::t('app', 'Deposits') ?></span>
+                        <span><?= Yii::t('app', 'Deposits') ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/investments') ?>" class="nav-link">
                         <i class="mdi mdi-chart-box-outline"></i>
-                        <span data-key="t-investments"><?= Yii::t('app', 'Investments') ?></span>
+                        <span><?= Yii::t('app', 'Investments') ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= Url::to('/cabinet/team') ?>" class="nav-link">
                         <i class="mdi mdi-account-group"></i>
-                        <span data-key="t-team"><?= Yii::t('app', 'Team') ?></span>
+                        <span><?= Yii::t('app', 'Team') ?></span>
                     </a>
                 </li>
 

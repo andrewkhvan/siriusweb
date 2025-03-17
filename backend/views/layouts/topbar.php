@@ -47,7 +47,7 @@ use yii\helpers\Url;
                     <div class="dropdown-menu dropdown-menu-end">
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
+                        <a href="<?= Url::base() ?>?lang=en-US" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
                             <img src="/images/flags/us.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">English</span>
                         </a>
@@ -60,7 +60,8 @@ use yii\helpers\Url;
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr" title="German">
-                            <img src="/images/flags/germany.svg" alt="user-image" class="me-2 rounded" height="18"> <span class="align-middle">Deutsche</span>
+                            <img src="/images/flags/germany.svg" alt="user-image" class="me-2 rounded" height="18">
+                            <span class="align-middle">Deutsche</span>
                         </a>
 
                         <!-- item-->
@@ -70,9 +71,9 @@ use yii\helpers\Url;
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
+                        <a href="<?= Url::base() ?>?lang=ru-RU" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
                             <img src="/images/flags/russia.svg" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">русский</span>
+                            <span class="align-middle">Русский</span>
                         </a>
 
                         <!-- item-->
@@ -84,7 +85,7 @@ use yii\helpers\Url;
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
                             <img src="/images/flags/french.svg" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">français</span>
+                            <span class="align-middle">Français</span>
                         </a>
 
                         <!-- item-->
