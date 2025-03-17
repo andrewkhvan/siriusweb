@@ -95,4 +95,11 @@ return [
     'Amount must be no greater than {max}.' => 'Сумма должна быть не более {max}.',
     'Request sent' => 'Заявка отправлена',
     'Close' => 'Закрыть',
+
+    // cabinet/team
+    'Affiliate team' => 'Партнерская команда',
+    'Statistics' => 'Статистика',
+    'Partners table' => 'Таблица партнеров',
+    'Invested' => 'Инвестировано',
+    'Loading...' => 'Загрузка...',
 ];
