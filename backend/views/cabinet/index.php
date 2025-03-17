@@ -2,6 +2,7 @@
 /** @var yii\web\View $this */
 
 use yii\helpers\Url;
+use backend\models\User;
 
 $this->title = Yii::t('app', 'Cabinet');
 $this->params['breadcumbs'][] = $this->title;
@@ -179,10 +180,10 @@ $this->params['breadcumbs'][] = $this->title;
     <div class="col-sm-6 col-xl-12">
         <h4><?= Yii::t('app', 'Affiliate activity') ?></h4>
         <div class="bg-vertical-gradient-2 rounded p-4 text-center mb-4">
-            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" alt="" class="w-100" style="max-width:160px"></p>
-            <a href="#" data-copy-text="https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?>" class="text-light" id="ref-link">
+            <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= User::getRefLink() ?>" alt="" class="w-100" style="max-width:160px"></p>
+            <a href="#" data-copy-text="<?= User::getRefLink() ?>" class="text-light" id="ref-link">
                 <i class="mdi mdi-content-copy"></i>
-                <small>https://sirius-energy.co/?ref=<?= Yii::$app->user->identity->email ?></small>
+                <small><?= User::getRefLink() ?></small>
             </a>
         </div>
 

@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\Url;
 
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
@@ -158,5 +159,10 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public function getRankTitle()
     {
         return 'Rank-' . $this->rank;
+    }
+
+    public static function getRefLink()
+    {
+        return Url::to(['auth/signup', 'ref' => Yii::$app->user->identity->email], true);
     }
 }
