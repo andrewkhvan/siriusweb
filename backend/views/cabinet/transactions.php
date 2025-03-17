@@ -53,6 +53,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('app', 'Sum'),
             ],
             [
+                'attribute' => 'Status',
+                'label' => Yii::t('app', 'Status'),
+            ],
+            [
                 'attribute' => 'refPartner',
                 'label' => Yii::t('app', 'Ref. Partner'),
             ],

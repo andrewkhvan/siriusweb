@@ -53,6 +53,7 @@ return [
     'Date' => 'Дата',
     'Operation' => 'Операция',
     'Bonus' => 'Бонус',
+    'Status' => 'Статус',
     'Sum' => 'Сумма',
     'Ref. Partner' => 'Реф. Партнёр',
     //filter
