@@ -108,6 +108,10 @@ class Dashboard extends \yii\base\Model
 
     public function getProgressValue()
     {
+        if ($this->investment == 0) {
+            return null;
+        }
+
         $percent = $this->investBonus / $this->investment * 100;
         return round($percent);
     }
