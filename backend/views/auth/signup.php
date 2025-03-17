@@ -7,8 +7,9 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
+use backend\models\SignupForm;
 
-$this->title = 'Login';
+$this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -36,20 +37,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="p-2 mt-4">
                     <?php $form = ActiveForm::begin([
-                        'id' => 'login-form',
+                        'id' => 'signup-form',
+                        'fieldConfig' => [
+                            'template' => "{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}"
+                        ],
                     ]); ?>
 
-                        <?= $form->field($model, 'email')->textInput(['placeholder' => 'Enter email'])->label(false) ?>
+                        <?= $form->field($model, 'name')->textInput(['placeholder' => $model->getAttributeLabel('name')]) ?>
 
-                        <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Enter password'])->label(false) ?>
+                        <?= $form->field($model, 'email')->textInput(['placeholder' => $model->getAttributeLabel('email')]) ?>
 
-                        <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => 'Repeat password'])->label(false) ?>
+                        <?= $form->field($model, 'password')->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-                        <?= $form->field($model, 'country')->textInput(['placeholder' => 'Enter Country'])->label(false) ?>
+                        <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => $model->getAttributeLabel('password_repeat')]) ?>
 
-                        <?= $form->field($model, 'city')->textInput(['placeholder' => 'Enter City'])->label(false) ?>
+                        <?= $form->field($model, 'country')->textInput(['placeholder' => $model->getAttributeLabel('country')]) ?>
 
-                        <?= $form->field($model, 'mentor_email')->textInput(['placeholder' => 'Mentor email'])->label(false) ?>
+                        <?= $form->field($model, 'countryCode')->textInput(['placeholder' => $model->getAttributeLabel('countryCode')]) ?>
+
+                        <?= $form->field($model, 'city')->textInput(['placeholder' => $model->getAttributeLabel('city')]) ?>
+
+                        <?= $form->field($model, 'phone')->textInput(['placeholder' => $model->getAttributeLabel('phone')]) ?>
+
+                        <?= $form->field($model, 'sponsorEmail')->textInput(['placeholder' => $model->getAttributeLabel('sponsorEmail')]) ?>
+
+                        <?= $form->field($model, 'language')->dropDownList(SignupForm::getLangList()) ?>
 
                         <div class="form-group">
                             <?= Html::submitButton('Sign In', ['class' => 'btn btn-success w-100', 'name' => 'login-button']) ?>

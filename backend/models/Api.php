@@ -69,6 +69,32 @@ class Api extends \yii\base\Model
         }
 
         return $output;
-        
+    }
+
+    public static function register($data)
+    {
+        $guzzle = new \GuzzleHttp\Client(['base_uri' => Yii::$app->params['api_host']]);
+
+        $data['function'] = 'registration';
+        $data['IP'] = Yii::$app->request->userIP;
+        $data['UserAgent'] = Yii::$app->request->userAgent;
+
+        try {
+            $response = $guzzle->post($uri='', [
+                'headers' => [
+                    'Authorization' => 'Basic ' . base64_encode(Yii::$app->params['access_token']),
+                ],
+                'json' => $data,
+            ]);
+        } catch (RequestException $e) {
+            return (object) ['HasError' => true, 'errorMessage' => 'Request fail'];
+        }
+
+        $output = $response->getBody()->getContents();
+        if ($output !== null) {
+            $output = json_decode($output);
+        }
+
+        return $output;
     }
 }

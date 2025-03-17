@@ -5,8 +5,10 @@
 
 use backend\assets\BlankAsset;
 use yii\bootstrap5\Html;
+use common\widgets\Alert;
 
 BlankAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -36,6 +38,7 @@ BlankAsset::register($this);
         <!-- auth page content -->
         <div class="auth-page-content">
             <div class="container">
+                <?= Alert::widget() ?>
                 <?= $content ?>
             </div>
         </div>

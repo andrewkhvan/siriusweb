@@ -69,9 +69,23 @@ class AuthController extends Controller
         ]);
     }
 
-    public function actionSignup()
+    public function actionSignup($ref = null)
     {
-        $model = new SignupForm();
+        $model = new SignupForm(['sponsorEmail' => $ref]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $request = $model->registerUser();
+            if (!$request->HasError) {
+                Yii::$app->session->setFlash('success', Yii::t('auth', 'You have successfully registered. Now you can log in to your account.'));
+                return $this->redirect(['auth/login']);
+            } else {
+                $model->addError('email', $request->errorMessage);
+
+                $model->password = '';
+                $model->password_repeat = '';
+            }
+        }
+
         return $this->render('signup', [
             'model' => $model,
         ]);

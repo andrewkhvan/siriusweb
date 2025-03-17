@@ -145,6 +145,11 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         return $this->password === $password;
     }
 
+    public static function getPasswordHash($pass)
+    {
+        return hash('sha256', $pass);
+    }
+
     public function getAvatarUrl()
     {
         return '/images/users/user-dummy-img.jpg';
