@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="card-body p-4">
                 <div class="text-center mt-2">
-                    <h5 class="text-primary">Create New Account</h5>
+                    <h5 class="text-primary"><?= Yii::t('auth', 'Create New Account') ?></h5>
                 </div>
                 <div class="p-2 mt-4">
                     <?php $form = ActiveForm::begin([
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'language')->dropDownList(SignupForm::getLangList()) ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Sign In', ['class' => 'btn btn-success w-100', 'name' => 'login-button']) ?>
+                            <?= Html::submitButton(Yii::t('auth', 'Sign Up'), ['class' => 'btn btn-success w-100', 'name' => 'login-button']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- end card -->
 
         <div class="mt-4 text-center">
-            <p class="mb-0">Already have an account ? <a href="<?=Url::to(['auth/login'])?>" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
+            <p class="mb-0"><?= Yii::t('auth', 'Already have an account?') ?> <a href="<?=Url::to(['auth/login'])?>" class="fw-semibold text-primary text-decoration-underline"><?= Yii::t('auth', 'Sign In') ?></a></p>
         </div>
 
     </div>
