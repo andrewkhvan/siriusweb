@@ -15,13 +15,13 @@ class BlankAsset extends AssetBundle
         'css/bootstrap.min.css',
         'css/app.min.css',
         'css/icons.min.css',
-        'css/custom.css',
+        'css/auth.css',
     ];
     public $js = [
-        "/js/plugins.js",
+        // "/js/plugins.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        // 'yii\bootstrap5\BootstrapAsset',
+        'yii\bootstrap5\BootstrapAsset',
     ];
 }

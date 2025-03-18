@@ -59,7 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- end card -->
 
         <div class="mt-4 text-center">
-            <p class="mb-0"><?= Yii::t('auth', "Don't have an account?") ?> <a href="<?=Url::to(['auth/signup'])?>" class="fw-semibold text-primary text-decoration-underline"> <?= Yii::t('auth', 'Signup') ?> </a> </p>
+            <p>
+                <?= Yii::t('auth', 'If you forgot your password you can') ?>
+                <?= Html::a(Yii::t('auth', 'reset it'), ['auth/request-password-reset'], [ 'class' => "fw-semibold text-primary text-decoration-underline"]) ?>.
+            </p>
+            <p class="mb-0"><?= Yii::t('auth', "Don't have an account?") ?> <a href="<?=Url::to(['auth/signup'])?>" class="fw-semibold text-primary text-decoration-underline"> <?= Yii::t('auth', 'Signup') ?></a></p>
         </div>
 
     </div>

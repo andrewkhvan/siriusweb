@@ -163,6 +163,15 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 
     public static function getRefLink()
     {
-        return Url::to(['auth/signup', 'ref' => Yii::$app->user->identity->email], true);
+        return Url::to(['auth/signup', 'ref' => Yii::$app->user->identity->email], 'https');
     }
+
+    /**
+     * Generates new password reset token
+     */
+    public static function generatePasswordResetToken()
+    {
+        return Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
 }

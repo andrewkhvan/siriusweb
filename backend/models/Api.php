@@ -18,7 +18,6 @@ class Api extends \yii\base\Model
 
         $data['SessionId'] = $sess_id;
         $data['function'] = $action;
-        // $data['SessionId'] = '595d946c-25ad-4436-9dbd-ef8cf3a47573';
 
         $guzzle = new \GuzzleHttp\Client(['base_uri' => Yii::$app->params['api_host']]);
 
@@ -31,6 +30,35 @@ class Api extends \yii\base\Model
             ]);
         } catch (RequestException $e) {
             return (object) ['HasError' => true, 'errorMessage' => 'Request fail'];
+        }
+
+        $output = $response->getBody()->getContents();
+
+        if ($output !== null) {
+            $output = json_decode($output);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Request without session_id
+     */
+    public static function requestAuth($action, $data = [])
+    {
+        $data['function'] = $action;
+
+        $guzzle = new \GuzzleHttp\Client(['base_uri' => Yii::$app->params['api_host']]);
+
+        try {
+            $response = $guzzle->post($uri='', [
+                'headers' => [
+                    'Authorization' => 'Basic ' . base64_encode(Yii::$app->params['access_token']),
+                ],
+                'json' => $data,
+            ]);
+        } catch (RequestException $e) {
+            return (object) ['HasError' => true, 'Message' => 'Request fail', 'errorMessage' => 'Request fail'];
         }
 
         $output = $response->getBody()->getContents();
@@ -60,7 +88,7 @@ class Api extends \yii\base\Model
                 ],
             ]);
         } catch (RequestException $e) {
-            return [];
+            return (object) ['HasError' => true, 'Message' => 'Request fail', 'errorMessage' => 'Request fail'];
         }
 
         $output = $response->getBody()->getContents();
@@ -87,7 +115,7 @@ class Api extends \yii\base\Model
                 'json' => $data,
             ]);
         } catch (RequestException $e) {
-            return (object) ['HasError' => true, 'errorMessage' => 'Request fail'];
+            return (object) ['HasError' => true, 'Message' => 'Request fail', 'errorMessage' => 'Request fail'];
         }
 
         $output = $response->getBody()->getContents();

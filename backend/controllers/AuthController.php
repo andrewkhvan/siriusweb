@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use backend\models\LoginForm;
 use backend\models\SignupForm;
+use backend\models\PasswordResetRequestForm;
+use backend\models\ResetPasswordForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -27,7 +29,7 @@ class AuthController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'signup'],
+                        'actions' => ['login', 'signup', 'reset-password', 'request-password-reset'],
                         'allow' => true,
                     ],
                     [
@@ -105,4 +107,53 @@ class AuthController extends Controller
 
         return $this->goHome();
     }
+
+
+    /**
+     * Requests password reset.
+     *
+     * @return mixed
+     */
+    public function actionRequestPasswordReset()
+    {
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', Yii::t('auth', 'Check your email for further instructions.'));
+
+                return $this->goHome();
+            }
+
+            Yii::$app->session->setFlash('error', Yii::t('auth', 'Sorry, we are unable to reset password for the provided email address.'));
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Resets password.
+     *
+     * @param string $token
+     * @return mixed
+     */
+    public function actionResetPassword($token = null)
+    {
+        $model = new ResetPasswordForm(['token' => $token]);
+
+        if ($model->isTokenNotExpired()) {
+
+            if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+                return $this->goHome();
+            }
+
+            return $this->render('resetPassword', [
+                'model' => $model,
+            ]);
+        }
+
+        return $this->redirect(['auth/request-password-reset']);
+    }
+
 }
