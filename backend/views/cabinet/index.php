@@ -84,7 +84,7 @@ $this->params['breadcumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-6 border-end">
                         <h4 class="mb-5"><?= Yii::t('app', 'Available balance') ?></h4>
-                        <h3 class="text-success">$<?= $data->investBonus ?></h3>
+                        <h3 class="text-success">$<?= $data->balance ?></h3>
                         <div class="fs-6 text-success fw-semibold"><?= $data->refBalance ?> USDT <?= Yii::t('app', 'Ref. balance') ?></div>
                         <div class="text-center mt-5"><a href="<?= Url::to(['cabinet/wallet'])?>" class="btn btn-success d-block"><?= Yii::t('app', 'Top up balance') ?></a></div>
                     </div>
@@ -181,7 +181,7 @@ $this->params['breadcumbs'][] = $this->title;
         <h4><?= Yii::t('app', 'Affiliate activity') ?></h4>
         <div class="bg-vertical-gradient-2 rounded p-4 text-center mb-4">
             <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= User::getRefLink() ?>" alt="" class="w-100" style="max-width:160px"></p>
-            <a href="#" data-copy-text="<?= User::getRefLink() ?>" class="text-light" id="ref-link">
+            <a href="<?= User::getRefLink() ?>" data-copy-text="<?= User::getRefLink() ?>" class="text-light" id="ref-link">
                 <i class="mdi mdi-content-copy"></i>
                 <small><?= User::getRefLink() ?></small>
             </a>

@@ -1,9 +1,7 @@
 <?php
 /** @var yii\web\View $this */
 
-use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
-use backend\models\wallet\CashoutForm;
 
 $this->title = Yii::t('app', 'Wallet');
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5 class="rounded bg-success-subtle p-2">Top up your balance</h5>
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= $data->WAddress ?>" alt="">
+                        <?= ($data->QR) ? Html::img($data->QR):'' ?>
                     </div>
                     <div class="ms-3">
                         <h4 class="mb-0">
@@ -34,9 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div>
                     <h5 class="text-muted text-center fs-3 fw-semibold">Tether TRC-20</h5>
                     <p class="rounded p-1 bg-success-subtle text-center">
-                        <a href="#" class="text-success-emphasis" id="copy-waddress" data-copy-text="<?= $data->WAddress ?>">
-                            <i class="mdi mdi-content-copy"></i> <?= $data->WAddress ?>
+                    <?php if ($data->WAddressIn): ?>
+                        <a href="#" class="text-success-emphasis" id="copy-waddress" data-copy-text="<?= $data->WAddressIn ?>">
+                            <i class="mdi mdi-content-copy"></i> <?= $data->WAddressIn ?>
                         </a>
+                    <?php else: ?>
+                        <i class="text-success">(not set)</i>
+                    <?php endif; ?>
                     </p>
                 </div>
             </div>
@@ -44,20 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5 class="rounded bg-danger-subtle p-2">Withdrawal of funds</h5>
                 <p class="text-bg-light p-2">To withdraw funds from your account, please provide your USDT wallet address (TRC-20). Carefully check the correctness of the specified address and indicate the desired amount for withdrawal.</p>
 
-            <?php $form = ActiveForm::begin([
-                // 'layout' => 'inline',
-                'fieldConfig' => [
-                    'template' => "{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                ]
-            ]) ?>
-                <?= $form->field($model, 'wAddress')->textInput(['placeholder' => $model->getAttributeLabel('wAddress')]) ?>
-
-                <?= $form->field($model, 'amount')->textInput(['placeholder' => $model->getAttributeLabel('amount')]) ?>
-
-                <?= $form->field($model, 'refBalance')->dropDownList(CashoutForm::getBalanceList()) ?>
-
-                <div class="form-group"><?= Html::submitButton(Yii::t('app', 'Withdraw funds'), ['class' => 'btn btn-success']) ?></div>
-            <?php ActiveForm::end() ?>
+                <?= $this->render('wallet_form', ['model' => $model]) ?>
             </div>
         </div>
     </div>

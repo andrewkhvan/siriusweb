@@ -1,6 +1,8 @@
 <?php
 /** @var yii\web\View $this */
 
+use yii\helpers\Html;
+
 $this->title = Yii::t('app', 'Wallet');
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -14,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5 class="rounded bg-success-subtle p-2">Пополнение баланса</h5>
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= $data->WAddress ?>" alt="">
+                        <?= ($data->QR) ? Html::img($data->QR):'' ?>
                     </div>
                     <div class="ms-3">
                         <h4 class="mb-0">
@@ -30,9 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div>
                     <h5 class="text-muted text-center fs-3 fw-semibold">Tether TRC-20</h5>
                     <p class="rounded p-1 bg-success-subtle text-center">
-                        <a href="#" class="text-success-emphasis" id="copy-waddress" data-copy-text="<?= $data->WAddress ?>">
-                            <i class="mdi mdi-content-copy"></i> <?= $data->WAddress ?>
+                    <?php if ($data->WAddressIn): ?>
+                        <a href="#" class="text-success-emphasis" id="copy-waddress" data-copy-text="<?= $data->WAddressIn ?>">
+                            <i class="mdi mdi-content-copy"></i> <?= $data->WAddressIn ?>
                         </a>
+                    <?php else: ?>
+                        <i class="text-success">(не установлен)</i>
+                    <?php endif; ?>
                     </p>
                 </div>
             </div>
@@ -40,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h5 class="rounded bg-danger-subtle p-2">Вывод средств</h5>
                 <p class="text-bg-light p-2">Для вывода средств со своего счета, пожалуйста, укажите адрес вашего кошелька USDT (TRC-20). Внимательно проверьте корректность указанного адреса и укажите желаемую сумму для снятия.</p>
 
-            <?= $this->render('wallet_form', ['model' => $model]) ?>
+                <?= $this->render('wallet_form', ['model' => $model]) ?>
             </div>
         </div>
     </div>

@@ -166,6 +166,7 @@ class CabinetController extends BaseController
 
         $model->amountBalance = $data->Balance;
         $model->amountRefBalance = $data->RefBalance;
+        $model->wAddress = $data->WAddress;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $result = $model->apiSend();

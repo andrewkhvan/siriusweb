@@ -98,9 +98,9 @@ return [
     'Close' => 'Закрыть',
 
     // cabinet/team
-    'Affiliate team' => 'Партнерская команда',
+    'Affiliate team' => 'Партнёрская команда',
     'Statistics' => 'Статистика',
-    'Partners table' => 'Таблица партнеров',
+    'Partners table' => 'Таблица партнёров',
     'Invested' => 'Инвестировано',
     'Loading...' => 'Загрузка...',
     'Level {0}' => 'Уровень {0}',
