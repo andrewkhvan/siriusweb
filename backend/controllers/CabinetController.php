@@ -70,6 +70,10 @@ class CabinetController extends BaseController
 
     public function actionInvestOpen($id)
     {
+        if (! Yii::$app->request->isAjax) {
+            return $this->redirect(['cabinet/investments']);
+        }
+
         $data = Api::request($func = 'investments');
 
         $model = new \backend\models\InvestForm;
@@ -91,11 +95,8 @@ class CabinetController extends BaseController
             if ($result->HasError) {
                 $model->addError('Amount', $result->errorMessage);
             } else {
-                return '<p class="text-success text-center">'
-                    . Yii::t('app', 'Request sent')
-                    . '<br><br><button class="btn btn-success" data-bs-dismiss="modal">'
-                    . Yii::t('app', 'Close')
-                    . '</button></p>';
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Request sent'));
+                return $this->redirect(['cabinet/deposits']);
             }
         }
 
@@ -173,7 +174,7 @@ class CabinetController extends BaseController
             if ($result->HasError) {
                 Yii::$app->session->setFlash('error', $result->errorMessage);
             } else {
-                Yii::$app->session->setFlash('success', 'Request sent');
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Request sent'));
             }
         }
 

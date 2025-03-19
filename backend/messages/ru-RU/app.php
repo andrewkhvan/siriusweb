@@ -104,4 +104,13 @@ return [
     'Invested' => 'Инвестировано',
     'Loading...' => 'Загрузка...',
     'Level {0}' => 'Уровень {0}',
+
+    // user/operations
+    'Create Operation' => 'Новая Операция',
+    'New operation' => 'Новая Операция',
+    'Replenishment' => 'Пополнение',
+    'Withdrawal' => 'Вывод',
+    'Investment' => 'Инвестиция',
+    'Wallet Address' => 'Кошелёк',
+    'Virtual' => 'Виртуально',
 ];

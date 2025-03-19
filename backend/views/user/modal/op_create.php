@@ -26,9 +26,9 @@ use yii\widgets\Menu;
         'options' => ['class' => 'nav nav-tabs dropdown-tabs nav-tabs-custom'],
         'linkTemplate' => '<a href="{url}" class="nav-link" data-pjax="1">{label}</a>',
         'items' => [
-            ['label' => 'Replenishment', 'url' => ['user/operation-create', 'task' => 'cashin'], 'options' => ['class' => 'nav-item']],
-            ['label' => 'Withdrawal', 'url' => ['user/operation-create', 'task' => 'cashout'], 'options' => ['class' => 'nav-item']],
-            ['label' => 'Investment', 'url' => ['user/operation-create', 'task' => 'investment'], 'options' => ['class' => 'nav-item']],
+            ['label' => Yii::t('app', 'Replenishment'), 'url' => ['user/operation-create', 'task' => 'cashin'], 'options' => ['class' => 'nav-item']],
+            ['label' => Yii::t('app', 'Withdrawal'), 'url' => ['user/operation-create', 'task' => 'cashout'], 'options' => ['class' => 'nav-item']],
+            ['label' => Yii::t('app', 'Investment'), 'url' => ['user/operation-create', 'task' => 'investment'], 'options' => ['class' => 'nav-item']],
         ],
     ]); ?>
     </div>

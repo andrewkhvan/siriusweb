@@ -89,6 +89,10 @@ class UserController extends BaseController
 
     public function actionOperationCreate($task = 'cashin')
     {
+        if (! Yii::$app->request->isAjax) {
+            return $this->redirect(['user/operations']);
+        }
+
         $model = new OperationForm(['scenario' => $task]);
 
         $model->operation = $task;

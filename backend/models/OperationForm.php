@@ -49,8 +49,8 @@ class OperationForm extends \yii\base\Model
         return [
             'investmentId' => Yii::t('app', 'Investment'),
             'wAddress' => Yii::t('app', 'Wallet Address'),
-            'amount' => Yii::t('app', 'Amount'),
-            'refBalance' => Yii::t('app', 'Ref Balance'),
+            'amount' => 'Amount',
+            'refBalance' => Yii::t('app', 'Ref. balance'),
             'virtual' => Yii::t('app', 'Virtual'),
             'status' => Yii::t('app', 'Status'),
         ];
