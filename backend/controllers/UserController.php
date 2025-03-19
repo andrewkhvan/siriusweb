@@ -7,7 +7,7 @@ use yii\filters\AccessControl;
 use backend\models\OperationForm;
 use backend\models\Api;
 
-class UserController extends \yii\web\Controller
+class UserController extends BaseController
 {
     public function behaviors()
     {

@@ -10,7 +10,7 @@ class BaseController extends \yii\web\Controller
     {
         $session = Yii::$app->session;
         if ($session->get('lang') == null) {
-            $session->set('lang', 'ru-RU');
+            $session->set('lang', 'en-US');
         }
 
         $lang = Yii::$app->request->get('lang');

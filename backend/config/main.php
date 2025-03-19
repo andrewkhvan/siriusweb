@@ -11,7 +11,7 @@ return [
     'name' => 'Sirius Energy',
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'cabinet/index',
-    'language' => 'ru-RU',
+    'language' => 'en-US',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
