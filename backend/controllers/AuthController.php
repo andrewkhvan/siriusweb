@@ -7,6 +7,7 @@ use backend\models\LoginForm;
 use backend\models\SignupForm;
 use backend\models\PasswordResetRequestForm;
 use backend\models\ResetPasswordForm;
+use backend\models\VerifyEmailForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,7 +30,7 @@ class AuthController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'signup', 'reset-password', 'request-password-reset'],
+                        'actions' => ['login', 'signup', 'reset-password', 'request-password-reset', 'verify-email'],
                         'allow' => true,
                     ],
                     [
@@ -154,6 +155,26 @@ class AuthController extends Controller
         }
 
         return $this->redirect(['auth/request-password-reset']);
+    }
+
+    /**
+     * Verify email address
+     *
+     * @param string $token
+     * @throws BadRequestHttpException
+     * @return yii\web\Response
+     */
+    public function actionVerifyEmail($token = '')
+    {
+        $model = new VerifyEmailForm(['token' => $token]);
+
+        if ($model->verifyEmail()) {
+            Yii::$app->session->setFlash('success', Yii::t('auth', 'Your email has been confirmed!'));
+        } else {
+            Yii::$app->session->setFlash('error', Yii::t('auth', 'Sorry, we are unable to verify your account with provided token.'));
+        }
+        
+        return $this->redirect(['auth/login']);
     }
 
 }

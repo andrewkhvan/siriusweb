@@ -40,4 +40,8 @@ return [
     'Password reset token cannot be blank.' => 'Не указан токен сброса пароля.',
     'Password reset token expired.' => 'Токен сброса пароля не действителен',
     'New password saved.' => 'Новый пароль сохранён',
+
+    // verify email
+    'Your email has been confirmed!' => 'Email адрес подтверждён',
+    'Sorry, we are unable to verify your account with provided token.' => 'Не удалось подтвердить аккаунт с данным токеном.',
 ];
