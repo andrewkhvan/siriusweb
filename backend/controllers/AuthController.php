@@ -16,7 +16,7 @@ use yii\web\Response;
 /**
  * Site controller
  */
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     public $layout = 'blank';
 
@@ -79,7 +79,7 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $request = $model->registerUser();
             if (!$request->HasError) {
-                Yii::$app->session->setFlash('success', Yii::t('auth', 'You have successfully registered. Now you can log in to your account.'));
+                Yii::$app->session->setFlash('success', Yii::t('auth', 'You have successfully registered.').' '.Yii::t('auth', 'Check your email for further instructions.'));
                 return $this->redirect(['auth/login']);
             } else {
                 $model->addError('email', $request->errorMessage);
@@ -169,7 +169,7 @@ class AuthController extends Controller
         $model = new VerifyEmailForm(['token' => $token]);
 
         if ($model->verifyEmail()) {
-            Yii::$app->session->setFlash('success', Yii::t('auth', 'Your email has been confirmed!'));
+            Yii::$app->session->setFlash('success', Yii::t('auth', 'Your email has been confirmed!') .' '. Yii::t('auth', 'Now you can log in to your account.'));
         } else {
             Yii::$app->session->setFlash('error', Yii::t('auth', 'Sorry, we are unable to verify your account with provided token.'));
         }

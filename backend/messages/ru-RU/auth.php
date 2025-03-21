@@ -30,7 +30,9 @@ return [
     'Name' => 'Имя',
     'Sign Up' => 'Зарегистрироваться',
     'Already have an account?' => 'Уже есть аккаунт ?',
-    'You have successfully registered. Now you can log in to your account.' => 'Вы успешно зарегистрировались. Теперь можете войти в кабинет.',
+    'You have successfully registered.' => 'Вы успешно зарегистрировались.',
+    'Check your email for further instructions.' => 'Проверьте почту для дальнейших инструкций.',
+    'Now you can log in to your account.' => 'Теперь Вы можете войти в кабинет.',
 
     // password restore
     'Request password reset' => 'Сброс пароля',
@@ -42,6 +44,6 @@ return [
     'New password saved.' => 'Новый пароль сохранён',
 
     // verify email
-    'Your email has been confirmed!' => 'Email адрес подтверждён',
+    'Your email has been confirmed!' => 'Email адрес подтверждён!',
     'Sorry, we are unable to verify your account with provided token.' => 'Не удалось подтвердить аккаунт с данным токеном.',
 ];
