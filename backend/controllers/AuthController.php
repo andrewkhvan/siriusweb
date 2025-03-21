@@ -38,6 +38,11 @@ class AuthController extends BaseController
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['login-by-session'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
                 ],
             ],
             'verbs' => [
@@ -175,6 +180,21 @@ class AuthController extends BaseController
         }
         
         return $this->redirect(['auth/login']);
+    }
+
+    public function actionLoginBySession($sid)
+    {
+        Yii::$app->session->set('session_id', $sid);
+
+        $user = \backend\models\User::findByApiRequest();
+
+        if (!$user) {
+            Yii::$app->session->setFlash('error', 'Can not login with this session_id');
+            return $this->redirect(['auth/login']);
+        }
+
+        Yii::$app->user->login($user, 3600*24*30);
+        return $this->goHome();
     }
 
 }

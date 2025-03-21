@@ -90,7 +90,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 
         $data = Api::request('partner');
 
-        if (is_object($data)) {
+        if (is_object($data) && !isset($data->HasError)) {
             $user = [
                 'id' => $data->PartnerId,
                 'email' => $data->Email,
