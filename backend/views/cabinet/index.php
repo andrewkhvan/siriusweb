@@ -183,7 +183,7 @@ $this->params['breadcumbs'][] = $this->title;
             <p><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=<?= User::getRefLink() ?>" alt="" class="w-100" style="max-width:160px"></p>
             <a href="<?= User::getRefLink() ?>" data-copy-text="<?= User::getRefLink() ?>" class="text-light" id="ref-link">
                 <i class="mdi mdi-content-copy"></i>
-                <small><?= User::getRefLink() ?></small>
+                <small><?= User::getRawRefLink() ?></small>
             </a>
         </div>
 
