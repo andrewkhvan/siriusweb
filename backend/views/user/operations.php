@@ -51,7 +51,16 @@ $this->title = Yii::t('app', 'Operations');
                         ]); 
                     },
                 ],
-                'Status',
+                [
+                    'attribute' => 'Status',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        if ($model->Status == 'Await') {
+                            return Html::tag('b', $model->Status);
+                        }
+                        return $model->Status;
+                    },
+                ],
                 'Operation',
                 'DocSum',
                 // 'PartnerId',
