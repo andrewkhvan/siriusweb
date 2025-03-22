@@ -51,9 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => $model->getAttributeLabel('password_repeat')]) ?>
 
-                        <?= $form->field($model, 'country')->textInput(['placeholder' => $model->getAttributeLabel('country')]) ?>
-
-                        <?= $form->field($model, 'countryCode')->textInput(['placeholder' => $model->getAttributeLabel('countryCode')]) ?>
+                        <?= $form->field($model, 'countryCode')->dropDownList(SignupForm::getCountryList()) ?>
 
                         <?= $form->field($model, 'city')->textInput(['placeholder' => $model->getAttributeLabel('city')]) ?>
 

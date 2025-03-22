@@ -12,7 +12,6 @@ class SignupForm extends Model
     public $name;
     public $phone;
     public $photo;
-    public $country;
     public $countryCode;
     public $city;
     public $sponsorEmail;
@@ -25,7 +24,7 @@ class SignupForm extends Model
         return [
             [['email', 'name', 'password', 'password_repeat', 'sponsorEmail', 'phone'], 'required'],
             [['email', 'sponsorEmail'], 'email'],
-            [['phone', 'photo', 'name', 'country', 'city', 'password', 'password_repeat', 'language'], 'string'],
+            [['phone', 'photo', 'name', 'city', 'password', 'password_repeat', 'language'], 'string'],
             [['countryCode'], 'string', 'min' => 2, 'max' => 3],
             [['password'], 'string', 'min' => 6],
             [['password_repeat'], 'passCompare'],
@@ -52,8 +51,7 @@ class SignupForm extends Model
             'email' => Yii::t('auth', 'Enter email'),
             'password' => Yii::t('auth', 'Enter password'),
             'password_repeat' => Yii::t('auth', 'Repeat password'),
-            'country' => Yii::t('auth', 'Enter Country'),
-            'countryCode' => Yii::t('auth', 'Enter Country Code'),
+            'countryCode' => Yii::t('auth', 'Enter Country'),
             'city' => Yii::t('auth', 'Enter City'),
             'phone' => Yii::t('auth', 'Enter Phone'),
             'photo' => Yii::t('auth', 'Enter Photo'),
@@ -64,9 +62,24 @@ class SignupForm extends Model
 
     public static function getLangList()
     {
+        return Lang::getList();
+    }
+
+    public static function getCountryList()
+    {
+        $result = Api::requestAuth('getcountries');
+        if (isset($result->rows)) {
+            $langs = [];
+            foreach ($result->rows as $lang) {
+                $langs[strtolower($lang->Code)] = $lang->Name;
+            }
+            sort($langs);
+            return $langs;
+        }
+
         return [
-            'ru-RU' => 'Russian',
-            'en-US' => 'English',
+            'KZ' => 'Kazakhstan',
+            'US' => 'United States',
         ];
     }
 }
