@@ -4,7 +4,9 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use backend\models\OperationForm;
+use backend\models\OperationSetForm;
 use backend\models\Api;
 
 class UserController extends BaseController
@@ -22,11 +24,17 @@ class UserController extends BaseController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['operations', 'operation-view', 'operation-create'],
+                        'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
                         },
                     ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'operation-update' => ['post'],
                 ],
             ],
         ];
@@ -85,6 +93,21 @@ class UserController extends BaseController
         return $this->renderPartial('modal/op_view', [
             'data' => $data,
         ]);
+    }
+
+    public function actionOperationUpdate($docno = null, $status)
+    {
+        if (empty($docno)) {
+            Yii::$app->session->setFlash('warning', 'Operation number not set');
+            return $this->redirect(['user/operations']);
+        }
+
+        $model = new OperationSetForm(['docNo' => $docno, 'status' => $status]);
+        if ($model->update()) {
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Operation updated'));
+        }
+
+        return $this->redirect(['user/operations']);
     }
 
     public function actionOperationCreate($task = 'cashin')
