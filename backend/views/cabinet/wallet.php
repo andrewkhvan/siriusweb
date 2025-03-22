@@ -24,7 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $data->Balance ?> USDT
                         </h4>
                         <p>Available balance</p>
-                        <p>Ref. balance: <span class="badge bg-success"><?= number_format($data->RefBalance, 2, '.', ' ') ?> USDT</span></p>
+                        <p>Ref. balance: <span class="text-bg-success py-1 px-2 rounded"><?= number_format($data->RefBalance, 2, '.', ' ') ?> USDT</span></p>
+                        <?php if ($data->CashAwait): ?>
+                            <p class="text-danger">Waiting for withdrawal</p>
+                        <?php endif; ?>
                         <hr>
                         <p class="bg-warning-subtle text-warning-emphasis rounded p-2">To top up your balance, please use the address below. Please note that before making a transaction, you must carefully check the correctness of the address.</p>
                     </div>
