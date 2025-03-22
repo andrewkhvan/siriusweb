@@ -73,7 +73,7 @@ class SignupForm extends Model
             foreach ($result->rows as $lang) {
                 $langs[strtolower($lang->Code)] = $lang->Name;
             }
-            sort($langs);
+            asort($langs);
             return $langs;
         }
 
