@@ -38,8 +38,12 @@ use yii\widgets\Pjax;
 
 <?php ActiveForm::end(); ?>
 
-<p class="text-center fs-1 mt-3 mb-0" id="inv-balance"><?= number_format($model->balance, 2, '.', ' ') ?> USDT</p>
-<p class="text-muted text-center" id="inv-balance"><?= Yii::t('app', 'Available balance') ?></p>
+<p class="text-center fs-20 mt-3 mb-0" id="inv-balance"><?= number_format($model->getTotal(), 2, '.', ' ') ?> USDT</p>
+<p class="text-muted text-center fs-24" id="inv-balance"><?= Yii::t('app', 'Total') ?></p>
+<p class="text-center fs-20 mb-0" id="inv-balance"><?= number_format($model->balance, 2, '.', ' ') ?> USDT</p>
+<p class="text-muted text-center mb-1" id="inv-balance"><?= Yii::t('app', 'Available balance') ?></p>
+<p class="text-center fs-20 mt-1 mb-0" id="inv-balance"><?= number_format($model->refbalance, 2, '.', ' ') ?> USDT</p>
+<p class="text-muted text-center" id="inv-balance"><?= Yii::t('app', 'Ref. balance') ?></p>
 
 <?php Pjax::end() ?>
 

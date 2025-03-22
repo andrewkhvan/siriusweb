@@ -95,6 +95,7 @@ return [
     'Amount must be no less than {min}.' => 'Сумма должна быть не менее {min}.',
     'Amount must be no greater than {max}.' => 'Сумма должна быть не более {max}.',
     'Request sent' => 'Заявка отправлена',
+    'Total' => 'Всего',
     'Close' => 'Закрыть',
 
     // cabinet/team

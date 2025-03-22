@@ -14,6 +14,7 @@ class InvestForm extends \yii\base\Model
     public $UpperThreshold;
     public $Remainder;
     public $balance;
+    public $refbalance;
 
     public function rules()
     {
@@ -41,7 +42,7 @@ class InvestForm extends \yii\base\Model
 
     public function validateBalance($attribute, $params)
     {
-        if ($this->balance < $this->Amount) 
+        if ($this->getTotal() < $this->Amount) 
         $this->addError($attribute, Yii::t('app', 'Insufficient funds'));
     }
 
@@ -59,5 +60,10 @@ class InvestForm extends \yii\base\Model
             return Yii::t('app', 'unlimited amount');
         }
         return $this->UpperThreshold . ' USDT';
+    }
+
+    public function getTotal()
+    {
+        return $this->balance + $this->refbalance;
     }
 }
