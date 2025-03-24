@@ -99,7 +99,7 @@ $this->params['breadcumbs'][] = $this->title;
                         </div>
                         <div class="">
                             <h5 class="fs-6 fw-medium"><?= Yii::t('app', 'Waiting for withdrawal') ?></h5>
-                            <div class="mb-4 fw-semibold">$<?= $data->getCashAwait() ?></div>
+                            <div class="mb-4 fw-semibold text-danger-emphasis">$<?= $data->getCashAwait() ?></div>
                         </div>
                         <div>
                             <h5 class="fs-6 fw-medium"><?= Yii::t('app', 'Main currency') ?></h5>

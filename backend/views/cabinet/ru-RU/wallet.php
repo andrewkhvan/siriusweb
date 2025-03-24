@@ -24,9 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $data->Balance ?> USDT
                         </h4>
                         <p>Доступный баланс</p>
-                        <p>Реф. баланс: <span class="text-bg-success py-1 px-2 rounded"><?= number_format($data->RefBalance, 2, '.', ' ') ?> USDT</span></p>
-                        <?php if ($data->CashAwait): ?>
-                            <p class="text-danger">Ожидание вывода средств</p>
+                        <p>Реф. баланс: <span class="text-bg-success text-nowrap py-1 px-2 rounded"><?= number_format($data->RefBalance, 2, '.', ' ') ?> USDT</span></p>
+                        <?php if ($data->CashAwait > 0): ?>
+                            <p>Ожидание вывода: <span class="text-bg-danger text-nowrap py-1 px-2 rounded"><?= $data->CashAwait ?> USDT</span></p>
                         <?php endif; ?>
                         <hr>
                         <p class="bg-warning-subtle text-warning-emphasis rounded p-2">Для пополнения вашего баланса, пожалуйста, используйте указанный ниже адрес. Обратите внимание, что перед совершением транзакции необходимо тщательно проверить корректность адреса.</p>
