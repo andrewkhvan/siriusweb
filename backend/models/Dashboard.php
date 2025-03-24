@@ -126,6 +126,16 @@ class Dashboard extends \yii\base\Model
         return round($percent);
     }
 
+    public function getDepositProgressValue()
+    {
+        if ($this->depositUpToNextRank == 0) {
+            return null;
+        }
+
+        $percent = $this->investment / $this->depositUpToNextRank * 100;
+        return round($percent);
+    }
+
     public function labels()
     {
         return [
