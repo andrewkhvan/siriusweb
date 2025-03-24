@@ -206,7 +206,15 @@ $this->params['breadcumbs'][] = $this->title;
                     <div class="flex-grow-1"><?= Yii::t('app', 'Turnover to next rank') ?></div>
                     <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->turnoverToNextRank ?></div>
                 </div>
-                <div class="d-flex mb-2">
+                <div class="progress w-100">
+                    <div class="progress-bar bg-info"
+                        role="progressbar"
+                        style="width: <?= $data->turnoverProgressValue ?>%;"
+                        aria-valuenow="<?= $data->totalStructInvestment ?>"
+                        aria-valuemin="0"
+                        aria-valuemax="<?= $data->turnoverToNextRank ?>"><?= $data->turnoverProgressValue ?>%</div>
+                </div>
+                <div class="d-flex mt-2 mb-2">
                     <div class="flex-grow-1"><?= Yii::t('app', 'Deposit up to next rank') ?></div>
                     <div class="flex-shrink-0 fw-semibold ms-2"><?= $data->depositUpToNextRank ?></div>
                 </div>

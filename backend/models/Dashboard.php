@@ -116,6 +116,16 @@ class Dashboard extends \yii\base\Model
         return round($percent);
     }
 
+    public function getTurnoverProgressValue()
+    {
+        if ($this->turnoverToNextRank == 0) {
+            return null;
+        }
+
+        $percent = $this->totalStructInvestment / $this->turnoverToNextRank * 100;
+        return round($percent);
+    }
+
     public function labels()
     {
         return [
