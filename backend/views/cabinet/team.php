@@ -77,6 +77,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="flex-grow-1"><?= Yii::t('app', 'Deposit up to next rank') ?></div>
                     <div class="flex-shrink-0 fw-semibold ms-2"><?= $info->depositUpToNextRank ?></div>
                 </div>
+                <div class="progress">
+                    <div class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: <?= $info->depositProgressValue ?>%;"
+                        aria-valuenow="<?= $info->investment ?>"
+                        aria-valuemin="0"
+                        aria-valuemax="<?= $info->depositUpToNextRank ?>"><?= $info->depositProgressValue ?>%</div>
+                </div>
             </div>
         </div>
 
