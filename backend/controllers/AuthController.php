@@ -87,7 +87,7 @@ class AuthController extends BaseController
                 Yii::$app->session->setFlash('success', Yii::t('auth', 'You have successfully registered.').' '.Yii::t('auth', 'Check your email for further instructions.'));
                 return $this->redirect(['auth/login']);
             } else {
-                $model->addError('email', $request->errorMessage);
+                Yii::$app->session->setFlash('error', $request->errorMessage);
 
                 $model->password = '';
                 $model->password_repeat = '';
