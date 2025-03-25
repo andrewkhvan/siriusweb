@@ -56,6 +56,7 @@ return [
     'Status' => 'Статус',
     'Sum' => 'Сумма',
     'Ref. Partner' => 'Реф. Партнёр',
+    'Details' => 'Детали',
     //filter
     'All transactions' => 'Все транзакции',
     'Dividend accrual' => 'Начисление дивидендов',

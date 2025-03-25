@@ -4,6 +4,7 @@
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Transactions');
 $this->params['breadcrumbs'][] = $this->title;
@@ -42,6 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'Operation',
                 'label' => Yii::t('app', 'Operation'),
+                'format' => 'raw',
+                'value' => function ($model) {
+                    switch ($model->Operation) {
+                        case 'Bonus': return Html::tag('span', $model->Operation, ['class' => 'badge bg-warning fs-12']);
+                        case 'Top up': return Html::tag('span', $model->Operation, ['class' => 'badge fs-12', 'style' => 'background:#ae50a8;']);
+                        case 'Invest': return Html::tag('span', $model->Operation, ['class' => 'badge fs-12', 'style' => 'background:#ff8ab6;']);
+                        case 'Withdraw': return Html::tag('span', $model->Operation, ['class' => 'badge bg-danger fs-12']);
+                    }
+                    return $model->Operation;
+                },
             ],
             [
                 'attribute' => 'Bonus',
@@ -55,10 +66,18 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'Status',
                 'label' => Yii::t('app', 'Status'),
+                'format' => 'raw',
+                'value' => function ($model) {
+                    switch ($model->Status) {
+                        case 'Completed': return Html::tag('span', $model->Status, ['class' => 'text-primary']);
+                        case 'Canceled': return Html::tag('span', $model->Status, ['class' => 'text-danger']);
+                    }
+                    return $model->Status;
+                },
             ],
             [
                 'attribute' => 'refPartner',
-                'label' => Yii::t('app', 'Ref. Partner'),
+                'label' => Yii::t('app', 'Details'),
             ],
         ],
     ]) ?>
