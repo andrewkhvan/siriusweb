@@ -53,19 +53,19 @@ use yii\helpers\Url;
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp" title="Spanish">
+                        <a href="<?= Url::base() ?>?lang=es-ES" class="dropdown-item notify-item language" data-lang="sp" title="Spanish">
                             <img src="/images/flags/spain.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">Española</span>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr" title="German">
+                        <a href="<?= Url::base() ?>?lang=de-DE" class="dropdown-item notify-item language" data-lang="gr" title="German">
                             <img src="/images/flags/germany.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">Deutsche</span>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it" title="Italian">
+                        <a href="<?= Url::base() ?>?lang=it-IT" class="dropdown-item notify-item language" data-lang="it" title="Italian">
                             <img src="/images/flags/italy.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">Italiana</span>
                         </a>
@@ -77,19 +77,19 @@ use yii\helpers\Url;
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ch" title="Chinese">
+                        <a href="<?= Url::base() ?>?lang=zh-CN" class="dropdown-item notify-item language" data-lang="ch" title="Chinese">
                             <img src="/images/flags/china.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">中国人</span>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
+                        <a href="<?= Url::base() ?>?lang=fr-FR" class="dropdown-item notify-item language" data-lang="fr" title="French">
                             <img src="/images/flags/french.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">Français</span>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
+                        <a href="<?= Url::base() ?>?lang=ar" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
                             <img src="/images/flags/ae.svg" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">Arabic</span>
                         </a>
