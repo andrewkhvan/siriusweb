@@ -54,39 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div><!-- end card body -->
         </div><!-- end card -->
 
-        <div class="card">
-            <div class="card-header"><h5 class="card-title"><?= Yii::t('app', 'Ranking system') ?></h5></div>
-            <div class="card-body">
-                <div class="d-flex mb-2">
-                    <div class="flex-grow-1"><?= Yii::t('app', 'Account Status') ?></div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $info->rankTitle ?></div>
-                </div>
-                <div class="d-flex mb-2">
-                    <div class="flex-grow-1"><?= Yii::t('app', 'Income by level') ?></div>
-                    <div class="flex-shrink-0 fw-semibold ms-2">3% &ndash; 3%</div>
-                </div>
-                <div class="d-flex mb-2">
-                    <div class="flex-grow-1"><?= Yii::t('app', 'Prize received') ?></div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $info->rankBonus ?></div>
-                </div>
-                <div class="d-flex mb-2">
-                    <div class="flex-grow-1"><?= Yii::t('app', 'Turnover to next rank') ?></div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $info->turnoverToNextRank ?></div>
-                </div>
-                <div class="d-flex mb-2">
-                    <div class="flex-grow-1"><?= Yii::t('app', 'Deposit up to next rank') ?></div>
-                    <div class="flex-shrink-0 fw-semibold ms-2"><?= $info->depositUpToNextRank ?></div>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar bg-success"
-                        role="progressbar"
-                        style="width: <?= $info->depositProgressValue ?>%;"
-                        aria-valuenow="<?= $info->investment ?>"
-                        aria-valuemin="0"
-                        aria-valuemax="<?= $info->depositUpToNextRank ?>"><?= $info->depositProgressValue ?>%</div>
-                </div>
-            </div>
-        </div>
+        <?= $this->render('_ranking_system', ['data' => $info]); ?>
 
     </div><!-- end col -->
 
