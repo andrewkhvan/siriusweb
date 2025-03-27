@@ -1984,7 +1984,7 @@ File: Main Js File
 		initComponents();
 		resetLayout();
 		pluginData();
-		initLanguage();
+		// initLanguage();
 		isCollapseMenu();
 		initMenuItemScroll();
 	}

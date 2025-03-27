@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use backend\models\Lang;
 
 ?>
 <header id="page-topbar">
@@ -42,7 +43,7 @@ use yii\helpers\Url;
 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="header-lang-img" src="/images/flags/us.svg" alt="Header Language" height="20" class="rounded">
+                        <img id="header-lang-img" src="<?= Lang::getFlag(Yii::$app->language) ?>" alt="Header Language" height="20" class="rounded">
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
 

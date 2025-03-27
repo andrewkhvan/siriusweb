@@ -17,6 +17,7 @@ class BaseController extends \yii\web\Controller
 
         if ($lang) {
             $session->set('lang', $lang);
+            \backend\models\Api::request('partner', ['language' => $lang]);
         }
 
         Yii::$app->language = $session->get('lang');
