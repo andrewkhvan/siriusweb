@@ -83,7 +83,7 @@ class Api extends \yii\base\Model
                     'function' => 'login',
                     'Email' => $username,
                     'Password' => $password,
-                    'IP' => Yii::$app->request->userIP,
+                    'IP' => static::userIP(),
                     'UserAgent' => Yii::$app->request->userAgent,
                 ],
             ]);
@@ -97,6 +97,16 @@ class Api extends \yii\base\Model
         }
 
         return $output;
+    }
+
+    public static function userIP()
+    {
+        $ip = Yii::$app->request->userIP;
+        if (isset($_SERVER['HTTP_X_REAL_IP'])) {
+            $ip .= " [{$_SERVER['HTTP_X_REAL_IP']}]";
+        }
+
+        return $ip;
     }
 
     public static function register($data)
