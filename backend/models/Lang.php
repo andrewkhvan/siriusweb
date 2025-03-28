@@ -38,6 +38,6 @@ class Lang extends Model
             $lang =Yii::$app->session->get('lang');
         }
 
-        return static::FLAGS[$lang];
+        return isset(static::FLAGS[$lang]) ? static::FLAGS[$lang] : static::FLAGS['en-US'];
     }
 }
