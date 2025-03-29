@@ -26,7 +26,10 @@ class UserController extends BaseController
                         'allow' => true,
                         'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create'],
                         'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->user->identity->isAdmin;
+                            if (isset(Yii::$app->user->identity->isAdmin)) {
+                                return Yii::$app->user->identity->isAdmin;
+                            }
+                            return false;
                         },
                     ],
                 ],
