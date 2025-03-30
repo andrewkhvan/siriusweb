@@ -23,7 +23,7 @@ $this->title = Yii::t('app', 'Operations');
                 'disabledPageCssClass' => 'disabled page-link',
             ]) ?>
             </div>
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0 mb-2">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create"><?= Yii::t('app', 'New operation') ?></button>
             </div>
             <div class="flex-shrink-0 ms-2">
