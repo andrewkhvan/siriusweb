@@ -6,8 +6,11 @@ use yii\widgets\Pjax;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'Transactions');
-$this->params['breadcrumbs'][] = $this->title;
+if (empty($this->title)) {
+    $this->title = Yii::t('app', 'Transactions');
+
+    $this->params['breadcrumbs'][] = $this->title;
+}
 
 ?>
 <div class="card">

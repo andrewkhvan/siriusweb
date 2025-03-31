@@ -136,12 +136,22 @@ class UserController extends BaseController
 
     public function actionPartnerDetail($partnerId)
     {
+        //user info
+        $info = new \backend\models\Dashboard;
+        $info->apiLoad('infoadmin', $partnerId);
+
+        // deposits
+        $deposits = Api::request('depositsadmin', ['partnerId' => $partnerId]);
+
+        // transactions
         $searchParams = Yii::$app->request->queryParams;
-        
         $data = Api::request('transactionsadmin', $searchParams);
 
         $dataProvider = new \yii\data\ArrayDataProvider([
             'allModels' => $data->rows,
+            'pagination' => [
+                'pageSize' => 50,
+            ],
         ]);
 
         $pages = new \yii\data\Pagination([
@@ -151,6 +161,8 @@ class UserController extends BaseController
         ]);
 
         return $this->render('partner_detail', [
+            'info' => $info,
+            'deposits' => $deposits,
             'dataProvider' => $dataProvider,
             'pages' => $pages,
         ]);
