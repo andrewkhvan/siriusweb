@@ -30,7 +30,7 @@ class AuthController extends BaseController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'signup', 'reset-password', 'request-password-reset', 'verify-email'],
+                        'actions' => ['error', 'login', 'signup', 'reset-password', 'request-password-reset', 'verify-email'],
                         'allow' => true,
                     ],
                     [
@@ -50,6 +50,15 @@ class AuthController extends BaseController
                 'actions' => [
                     'logout' => ['post'],
                 ],
+            ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
             ],
         ];
     }

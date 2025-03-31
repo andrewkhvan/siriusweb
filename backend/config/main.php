@@ -39,7 +39,7 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'auth/error',
         ],
         'assetManager' => [
             'appendTimestamp' => true,
