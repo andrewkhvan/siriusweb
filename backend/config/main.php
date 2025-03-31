@@ -48,6 +48,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'user/partner-detail/<partnerId:\d+>' => 'user/partner-detail',
             ],
         ],
     ],
