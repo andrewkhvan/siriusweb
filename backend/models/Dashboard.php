@@ -30,6 +30,8 @@ class Dashboard extends \yii\base\Model
     public $depositUpToNextRank;     //: 0
     public $activeCount;     //: 
     public $wAddress;     //: 
+    public $partnerName;
+    public $email;
 
     public function rules()
     {
@@ -38,9 +40,9 @@ class Dashboard extends \yii\base\Model
         ];
     }
 
-    public function apiLoad()
+    public function apiLoad($apifunction = 'info', $partnerId = null)
     {
-        $result =  Api::request('info');
+        $result =  Api::request($apifunction, ['partnerId' => $partnerId]);
 
         $this->investment = $result->Investment;
         $this->investBonus = $result->InvestBonus;
@@ -65,6 +67,16 @@ class Dashboard extends \yii\base\Model
         $this->depositUpToNextRank = $result->DepositUpToNextRank;
         $this->activeCount = $result->ActiveCount;
         $this->wAddress = $result->WAddress;
+        $this->partnerName = $result->PartnerName;
+        $this->email = $result->Email;
+    }
+
+    public function getPartnerName()
+    {
+        if (empty($this->partnerName)) {
+            return '(not set)';
+        }
+        return $this->partnerNmae;
     }
 
     public function getRankTitle()

@@ -145,6 +145,9 @@ class CabinetController extends BaseController
 
         $dataProvider = new \yii\data\ArrayDataProvider([
             'allModels' => $data->rows,
+            'pagination' => [
+                'pageSize' => 50,
+            ],
         ]);
 
         $pages = new \yii\data\Pagination([

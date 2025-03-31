@@ -1,8 +1,11 @@
 <?php
 /** @var yii\web\View $this */
 
-$this->title = Yii::t('app', 'Deposits');
-$this->params['breadcrumbs'][] = $this->title;
+if (! $this->title) {
+    $this->title = Yii::t('app', 'Deposits');
+
+    $this->params['breadcrumbs'][] = $this->title;
+}
 
 ?>
 <?php foreach ($data->rows as $row): ?>
