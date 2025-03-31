@@ -24,7 +24,7 @@ class UserController extends BaseController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create'],
+                        'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create', 'partner-detail'],
                         'matchCallback' => function ($rule, $action) {
                             if (isset(Yii::$app->user->identity->isAdmin)) {
                                 return Yii::$app->user->identity->isAdmin;
@@ -131,6 +131,28 @@ class UserController extends BaseController
         return $this->renderPartial('modal/op_create', [
             'model' => $model,
             'scenario' => $model->scenarios()[$task],
+        ]);
+    }
+
+    public function actionPartnerDetail($partnerId)
+    {
+        $searchParams = Yii::$app->request->queryParams;
+        
+        $data = Api::request('transactionsadmin', $searchParams);
+
+        $dataProvider = new \yii\data\ArrayDataProvider([
+            'allModels' => $data->rows,
+        ]);
+
+        $pages = new \yii\data\Pagination([
+            'totalCount' => $data->total,
+            'defaultPageSize' => 50,
+            'pageParam' => 'pageNo',
+        ]);
+
+        return $this->render('partner_detail', [
+            'dataProvider' => $dataProvider,
+            'pages' => $pages,
         ]);
     }
 }

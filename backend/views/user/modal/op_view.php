@@ -25,7 +25,12 @@ use yii\helpers\Url;
 </div>
 <div class="row">
     <div class="col-4"><p class="fw-bold text-end">Name</p></div>
-    <div class="col-8"><p><?= $data->PartnerName ?></p></div>
+    <div class="col-8">
+        <p>
+            <?= $data->PartnerName ?>
+            <a href="<?= Url::to(['user/partner-detail', 'partnerId' => $data->PartnerId]) ?>" target="_blank"> <i class="mdi mdi-eye mdi-18px"></i></a>
+        </p>
+    </div>
 </div>
 <div class="row">
     <div class="col-4"><p class="fw-bold text-end">Email</p></div>
