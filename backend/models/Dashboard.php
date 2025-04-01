@@ -76,7 +76,7 @@ class Dashboard extends \yii\base\Model
         if (empty($this->partnerName)) {
             return '(not set)';
         }
-        return $this->partnerNmae;
+        return $this->partnerName;
     }
 
     public function getRankTitle()
