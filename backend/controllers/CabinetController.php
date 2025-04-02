@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use backend\models\Api;
 use backend\models\Transaction;
 use backend\models\InvestForm;;
@@ -139,6 +140,8 @@ class CabinetController extends BaseController
 
     public function actionTransactions()
     {
+        Url::remember();
+
         $params = $this->request->queryParams;
 
         $data = Api::request('transactions', $params);
@@ -160,6 +163,15 @@ class CabinetController extends BaseController
             'dataProvider' => $dataProvider,
             'pages' => $pages,
         ]);
+    }
+
+    public function actionTransactionCancel($docNo)
+    {
+        if (Yii::$app->request->isPost) {
+            Transaction::cancel($docNo);
+        }
+
+        return $this->goBack();
     }
 
     public function actionWallet()

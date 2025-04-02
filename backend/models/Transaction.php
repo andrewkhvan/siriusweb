@@ -43,4 +43,10 @@ class Transaction extends Model
             7 => Yii::t('app', 'Investment'),
         ];
     }
+
+    public static function cancel($docNo)
+    {
+        $docNo = (int) $docNo;
+        return Api::request('canceltransaction', ['docNo' => $docNo]);
+    }
 }

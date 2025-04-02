@@ -5,6 +5,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 if (empty($this->title)) {
     $this->title = Yii::t('app', 'Transactions');
@@ -72,8 +73,17 @@ if (empty($this->title)) {
                 'format' => 'raw',
                 'value' => function ($model) {
                     switch ($model->Status) {
-                        case 'Completed': return Html::tag('span', $model->Status, ['class' => 'text-primary']);
-                        case 'Canceled': return Html::tag('span', $model->Status, ['class' => 'text-danger']);
+                        case 'Completed':
+                            return Html::tag('span', $model->Status, ['class' => 'text-primary']);
+                        case 'Canceled':
+                            return Html::tag('span', $model->Status, ['class' => 'text-danger']);
+                        case 'Await':
+                            return Html::tag('span', $model->Status)
+                                . Html::a('', Url::to(['/cabinet/transaction-cancel', 'docNo' => $model->DocNo]), [
+                                    'class' => 'mdi mdi-18px mdi-close-circle text-danger ms-2',
+                                    'data-method' => 'post',
+                                    'data-confirm' => Yii::t('app', 'Cancel transaction?'),
+                                  ]);
                     }
                     return $model->Status;
                 },

@@ -57,6 +57,7 @@ return [
     'Sum' => 'Сумма',
     'Ref. Partner' => 'Реф. Партнёр',
     'Details' => 'Детали',
+    'Cancel transaction?' => 'Отменить транзакцию?',
     //filter
     'All transactions' => 'Все транзакции',
     'Dividend accrual' => 'Начисление дивидендов',
