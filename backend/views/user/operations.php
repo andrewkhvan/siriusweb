@@ -34,6 +34,7 @@ $this->title = Yii::t('app', 'Operations');
         <div class="table-responsive">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
             'layout' => "{items}",
             'columns' => [
                 'Date:datetime',
@@ -60,8 +61,20 @@ $this->title = Yii::t('app', 'Operations');
                         }
                         return $model->Status;
                     },
+                    'filter' => [
+                        'Await' => Yii::t('app', 'Await'),
+                        'Completed' => Yii::t('app', 'Completed'),
+                        'Canceled' => Yii::t('app', 'Canceled'),
+                    ],
                 ],
-                'Operation',
+                [
+                    'attribute' => 'Operation',
+                    'filter' => [
+                        'Top up' => Yii::t('app', 'Top up'),
+                        'Withdraw' => Yii::t('app', 'Withdraw'),
+                        'Invest' => Yii::t('app', 'Invest'),
+                    ],
+                ],
                 'DocSum',
                 // 'PartnerId',
                 'PartnerName',

@@ -5,7 +5,9 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use backend\models\OperationForm;
+use backend\models\OperationSearch;
 use backend\models\OperationSetForm;
 use backend\models\Api;
 
@@ -55,31 +57,21 @@ class UserController extends BaseController
 
     public function actionOperations()
     {
-        $searchParams = Yii::$app->request->queryParams;
-        $data = Api::request('operations', $searchParams);
+        Url::remember();
 
         $createForm = new OperationForm;
+        $searchParams = Yii::$app->request->queryParams;
 
-        // $searchModel = new OperationSearch;
-        // $dataProvider = $searchModel->search($searchParams);
-        $dataProvider = new \yii\data\ArrayDataProvider([
-            'allModels' => $data->rows,
-            'pagination' => [
-                'pageSize' => 50,
-            ],
-        ]);
-
-
-        $pages = new \yii\data\Pagination([
-            'defaultPageSize' => 50,
-            'totalCount' => $data->total,
-            'pageParam' => 'pageNo',
-        ]);
+        $searchModel = new OperationSearch;
+        $searchModel->load($searchParams);
+        $searchModel->pageNo = Yii::$app->request->get('pageNo');
+        $searchResult = $searchModel->search();
 
         return $this->render('operations', [
             'createForm' => $createForm,
-            'dataProvider' => $dataProvider,
-            'pages' => $pages,
+            'searchModel' => $searchModel,
+            'dataProvider' => $searchResult['dataProvider'],
+            'pages' => $searchResult['pages'],
         ]);
     }
 
@@ -110,7 +102,7 @@ class UserController extends BaseController
             Yii::$app->session->setFlash('success', Yii::t('app', 'Operation updated'));
         }
 
-        return $this->redirect(['user/operations']);
+        return $this->goBack();
     }
 
     public function actionOperationCreate($task = 'cashin')
@@ -123,9 +115,7 @@ class UserController extends BaseController
 
         $model->operation = $task;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            // return '<pre>'. print_r($model->attributes, true) .'</pre>';
-            return $this->redirect(['user/operations']);
+            return $this->goBack();
         }
 
         return $this->renderPartial('modal/op_create', [
