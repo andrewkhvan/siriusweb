@@ -89,6 +89,7 @@ class CabinetController extends BaseController
         }
 
         $model->balance = $data->balance;
+        $model->refbalance = $data->refbalance;
         unset($data);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
