@@ -69,6 +69,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
+<?php if (YII_DEBUG == false): ?>
+    <script src="//fbstore.sendpulse.com/loader.js" data-sp-widget-id="a3a5fd09-b3e2-403f-a990-4602dc8aa147" async></script>
+<?php endif; ?>
+
 <?php
 
 $this->registerJsFile("/libs/particles.js/particles.js");
