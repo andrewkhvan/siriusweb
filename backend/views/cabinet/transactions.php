@@ -78,12 +78,7 @@ if (empty($this->title)) {
                         case 'Canceled':
                             return Html::tag('span', $model->Status, ['class' => 'text-danger']);
                         case 'Await':
-                            return Html::tag('span', $model->Status)
-                                . Html::a('', Url::to(['/cabinet/transaction-cancel', 'docNo' => $model->DocNo]), [
-                                    'class' => 'mdi mdi-18px mdi-close-circle text-danger ms-2',
-                                    'data-method' => 'post',
-                                    'data-confirm' => Yii::t('app', 'Cancel transaction?'),
-                                  ]);
+                            return Html::tag('span', $model->Status);
                     }
                     return $model->Status;
                 },
@@ -91,6 +86,19 @@ if (empty($this->title)) {
             [
                 'attribute' => 'refPartner',
                 'label' => Yii::t('app', 'Details'),
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $btn = '';
+                    if ($model->Status == 'Await') {
+                        $btn = Html::a(Yii::t('app', 'Cancel'), Url::to(['/cabinet/transaction-cancel', 'docNo' => $model->DocNo]), [
+                            'class' => 'btn btn-danger btn-sm ms-2',
+                            'data-method' => 'post',
+                            'data-confirm' => Yii::t('app', 'Cancel transaction?'),
+                        ]);
+                    }
+
+                    return "{$btn} {$model->refPartner}";
+                },
             ],
         ],
     ]) ?>
