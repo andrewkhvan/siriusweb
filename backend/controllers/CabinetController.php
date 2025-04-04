@@ -209,7 +209,10 @@ class CabinetController extends BaseController
 
         //send PIN request on popup open
         if (!Yii::$app->request->isPost) {
-            Api::request('startchangewaddress');
+            $result = Api::request('startchangewaddress');
+            if ($result->HasError) {
+                return "<p class=\"text-bg-danger p-2 rounded\">{$result->ErrorMessage}</p>";
+            }
         }
 
         $model = new \backend\models\wallet\WalletAddressForm;
