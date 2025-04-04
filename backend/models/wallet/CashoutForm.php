@@ -16,7 +16,7 @@ class CashoutForm extends \yii\base\Model
     public function rules()
     {
         return [
-            [['amount', 'wAddress'], 'required'],
+            [['amount'], 'required'],
             [['amount'], 'integer', 'min' => 100],
             [['amount'], 'validateAmount'],
             [['wAddress'], 'string'],

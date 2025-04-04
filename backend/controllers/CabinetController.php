@@ -200,4 +200,34 @@ class CabinetController extends BaseController
         ]);
     }
 
+    public function actionWalletUpdate()
+    {
+        if (!Yii::$app->request->isAjax) {
+            throw new \yii\web\BadRequestHttpException();
+            exit;
+        }
+
+        //send PIN request on popup open
+        if (!Yii::$app->request->isPost) {
+            Api::request('startchangewaddress');
+        }
+
+        $model = new \backend\models\wallet\WalletAddressForm;
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $result = $model->changeAddr();
+
+            if ($result->HasError) {
+                Yii::$app->session->setFlash('error', $result->errorMessage);
+            } else {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Wallet Address changed.'));
+            }
+            return $this->redirect(['cabinet/wallet']);
+        }
+
+        return $this->renderPartial('wallet_update', [
+            'model' => $model,
+        ]);
+    }
+
 }
