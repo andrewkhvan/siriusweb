@@ -58,7 +58,8 @@ use yii\helpers\Url;
 </div>
 
 <div class="pt-2 text-end">
+    <a href="<?= Url::to(['user/operation-update', 'docno' => $data->DocNo, 'status' => 'manual']) ?>" data-method="post" class="btn btn-primary<?= $data->HasApproveButton ? '': ' disabled' ?>">Manual Confirmation</a>
     <a href="<?= Url::to(['user/operation-update', 'docno' => $data->DocNo, 'status' => 'approve']) ?>" data-method="post" class="btn btn-success<?= $data->HasApproveButton ? '': ' disabled' ?>">Approve</a>
     <a href="<?= Url::to(['user/operation-update', 'docno' => $data->DocNo, 'status' => 'cancel']) ?>"  data-method="post" class="btn btn-danger<?= $data->HasCancelButton ? '': ' disabled' ?>">Decline</a>
-    <button class="btn btn-soft-dark" data-bs-dismiss="modal">Close</button>
+    <button class="btn btn-soft-dark ms-2" data-bs-dismiss="modal">Close</button>
 </div>
