@@ -18,7 +18,7 @@ use yii\bootstrap5\ActiveForm;
         <?= $form->field($model, 'pin')->textInput(['placeholder' => Yii::t('app', 'Enter PIN code from email') ]) ?>
 
         <div class="button-group">
-            <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary']) ?>
         </div>
 
     <?php ActiveForm::end() ?>
