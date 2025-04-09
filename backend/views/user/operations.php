@@ -36,8 +36,13 @@ $this->title = Yii::t('app', 'Operations');
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'layout' => "{items}",
+            'headerRowOptions' => ['class' => 'text-nowrap'],
             'columns' => [
-                'Date:datetime',
+                [
+                    'attribute' => 'Date',
+                    'format' => 'datetime',
+                    'contentOptions' => ['class' => 'w-md'],
+                ],
                 [
                     'attribute' => 'DocNo',
                     'format' => 'raw',
