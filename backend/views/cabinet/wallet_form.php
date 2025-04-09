@@ -13,7 +13,7 @@ BTN;
     <?= $form->field($model, 'wAddress', [
         'template' => "{label}\n<div class=\"input-group\">{input}$btn</div>\n{hint}\n{error}"
     ])
-        ->textInput(['placeholder' => $model->getAttributeLabel('wAddress'), 'disabled' => true]) ?>
+        ->textInput(['placeholder' => $model->getAttributeLabel('wAddress'), 'readonly' => true, 'class' => 'form-control bg-dark-subtle']) ?>
 
     <?= $form->field($model, 'amount')->textInput(['placeholder' => $model->getAttributeLabel('amount')]) ?>
 
