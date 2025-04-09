@@ -20,7 +20,8 @@ class InvestForm extends \yii\base\Model
     {
         return [
             [['InvestmentName'], 'string'],
-            [['Id', 'Amount', 'Profitability', 'Threshold', 'UpperThreshold', 'Remainder'], 'integer'],
+            [['Id', 'Amount', 'Profitability', 'Threshold', 'UpperThreshold'], 'integer'],
+            [['Remainder'], 'number'],
             [['Amount'], 'required'],
             [['Amount'], 'validateAmount'],
             [['Amount'], 'validateBalance'],
