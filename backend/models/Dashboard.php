@@ -7,29 +7,29 @@ use backend\models\Dashboard;
 
 class Dashboard extends \yii\base\Model
 {
-    public $investment;      //: 3500
-    public $investBonus;     //: 600
-    public $directBonus;     //: 4924.99
-    public $secondLevelInvestBonus;      //: 2984.19
-    public $rankBonus;       //: 3000
-    public $totalBonus;      //: 11509.18
-    public $balance;     //: -31995.82
-    public $investBonusMonth;        //: 400
-    public $investBonusWeek;     //: 100
-    public $investBonusYear;     //: 4800
-    public $rank;        //: 3
-    public $registrationDate;        //: "1577836800"
-    public $refCount;        //: 13
-    public $totalCount;      //: 2451
-    public $totalStructInvestment;       //: 498021.89
-    public $refBalance;      //: 0
-    public $cashOutSum;      //: -40000
-    public $cashInSum;       //: 0
-    public $cashAwait;       //: 0
-    public $turnoverToNextRank;      //: 0
-    public $depositUpToNextRank;     //: 0
-    public $activeCount;     //: 
-    public $wAddress;     //: 
+    public $investment;
+    public $investBonus;
+    public $directBonus;
+    public $secondLevelInvestBonus;
+    public $rankBonus;
+    public $totalBonus;
+    public $balance;
+    public $investBonusMonth;
+    public $investBonusWeek;
+    public $investBonusYear;
+    public $rank;
+    public $registrationDate;
+    public $refCount;
+    public $totalCount;
+    public $totalStructInvestment;
+    public $refBalance;
+    public $cashOutSum;
+    public $cashInSum;
+    public $cashAwait;
+    public $turnoverToNextRank;
+    public $depositUpToNextRank;
+    public $activeCount;
+    public $wAddress;
     public $partnerName;
     public $email;
     public $BalanceWithdrawalBlocked;
