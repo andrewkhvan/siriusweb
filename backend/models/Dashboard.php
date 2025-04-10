@@ -32,21 +32,17 @@ class Dashboard extends \yii\base\Model
     public $wAddress;
     public $partnerName;
     public $email;
-    public $BalanceWithdrawalBlocked;
-    public $RefBalanceWithdrawalBlocked;
-    public $AccountBlocked;
 
     public function rules()
     {
         return [
             [['investment', 'investBonus', 'directBonus', 'secondLevelInvestBonus', 'rankBonus', 'totalBonus', 'balance', 'investBonusMonth', 'investBonusWeek', 'investBonusYear', 'rank', 'registrationDate', 'refCount', 'totalCount', 'totalStructInvestment', 'refBalance', 'cashOutSum', 'cashInSum', 'cashAwait', 'turnoverToNextRank', 'depositUpToNextRank', 'activeCount', 'wAddress'], 'save'],
-            [['BalanceWithdrawalBlocked', 'RefBalanceWithdrawalBlocked', 'AccountBlocked'], 'boolean'],
         ];
     }
 
     public function apiLoad($apifunction = 'info', $partnerId = null)
     {
-        $result =  Api::request($apifunction, ['partnerId' => $partnerId]);
+        $result = Api::request($apifunction, ['partnerId' => $partnerId]);
 
         $this->investment = $result->Investment;
         $this->investBonus = $result->InvestBonus;
@@ -73,9 +69,8 @@ class Dashboard extends \yii\base\Model
         $this->wAddress = $result->WAddress;
         $this->partnerName = $result->PartnerName;
         $this->email = $result->Email;
-        $this->BalanceWithdrawalBlocked = $result->BalanceWithdrawalBlocked;
-        $this->RefBalanceWithdrawalBlocked = $result->RefBalanceWithdrawalBlocked;
-        $this->AccountBlocked = $result->AccountBlocked;
+
+        return $result;
     }
 
     public function getPartnerName()

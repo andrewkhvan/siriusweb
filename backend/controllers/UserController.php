@@ -127,7 +127,7 @@ class UserController extends BaseController
     public function actionPartnerDetail($partnerId)
     {
         //user info
-        $info = new \backend\models\Dashboard;
+        $info = new \backend\models\DashboardAdmin;
         $info->apiLoad('infoadmin', $partnerId);
 
         // web form
