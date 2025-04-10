@@ -33,7 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
     'headerRowOptions' => ['class' => 'text-nowrap'],
     'columns' => [
         'Name',
-        'Email',
+        [
+            'attribute' => 'Email',
+            'format' => 'raw',
+            'value' => function ($data) {
+                return "$data->Email "
+                    . Html::a('', ['user/partner-detail', 'partnerId' => $data->PartnerId], ['class' => 'mdi mdi-eye', 'target' => '_blank']) ;
+            },
+        ],
         'Phone',
         'BalanceWithdrawalBlocked:boolean',
         'RefBalanceWithdrawalBlocked:boolean',
