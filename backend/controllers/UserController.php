@@ -130,6 +130,14 @@ class UserController extends BaseController
         $info = new \backend\models\Dashboard;
         $info->apiLoad('infoadmin', $partnerId);
 
+        // web form
+        $model = new \backend\models\PartnerStateForm(['PartnerId' => $partnerId]);
+        $model->attributes = $info->attributes;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->update();
+            return $this->redirect(Url::base());
+        }
+
         // deposits
         $deposits = Api::request('depositsadmin', ['partnerId' => $partnerId]);
 
@@ -151,6 +159,7 @@ class UserController extends BaseController
         ]);
 
         return $this->render('partner_detail', [
+            'model' => $model,
             'info' => $info,
             'deposits' => $deposits,
             'dataProvider' => $dataProvider,

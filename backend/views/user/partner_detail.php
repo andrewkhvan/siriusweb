@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][2] = Yii::t('app', 'Partner stats');
         <?= $this->render('//cabinet/_info_statistics', ['data' => $info]);  ?>
     </div>
     <div class="col-sm-12 col-md-7">
+        <?= $this->render('partner_state_form', ['model' => $model]) ?>
         <?= $this->render('partner_deposits', ['data' => $deposits]) ?>
     </div>
 </div>
