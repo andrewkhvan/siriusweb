@@ -62,7 +62,7 @@ class OperationForm extends \yii\base\Model
             $result = Api::request('newoperation', $this->attributes);
 
             if ($result->HasError) {
-                $this->addError('Status', $result->errorMessage);
+                $this->addError('status', $result->errorMessage);
 
                 return false;
             }
