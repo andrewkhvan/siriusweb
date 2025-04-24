@@ -29,7 +29,7 @@ class OperationSearch extends Operation
         $data = Api::request('operations', $this->attributes);
 
         $dataProvider = new ArrayDataProvider([
-            'allModels'=> $data->rows,
+            'allModels'=> $this->addIndex($data->rows),
             'pagination' => [
                 'pageSize' => 50,
             ],
@@ -45,5 +45,15 @@ class OperationSearch extends Operation
             'dataProvider' => $dataProvider,
             'pages' => $pages,
         ];
+    }
+
+    private function addIndex($data)
+    {
+        $res = [];
+        foreach ($data as $item) {
+            $res[$item->DocNo] = $item;
+        }
+
+        return $res;
     }
 }

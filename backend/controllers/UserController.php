@@ -26,7 +26,7 @@ class UserController extends BaseController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create', 'partner-detail'],
+                        'actions' => ['operations', 'operation-view', 'operation-update', 'operation-create', 'partner-detail', 'operation-multi-update'],
                         'matchCallback' => function ($rule, $action) {
                             if (isset(Yii::$app->user->identity->isAdmin)) {
                                 return Yii::$app->user->identity->isAdmin;
@@ -100,6 +100,25 @@ class UserController extends BaseController
         $model = new OperationSetForm(['docNo' => $docno, 'status' => $status]);
         if ($model->update()) {
             Yii::$app->session->setFlash('success', Yii::t('app', 'Operation updated'));
+        }
+
+        return $this->goBack();
+    }
+
+    public function actionOperationMultiUpdate()
+    {
+        if (! Yii::$app->request->isAjax) {
+            return $this->goBack();
+        }
+
+        $post = Yii::$app->request->post();
+        if (count($post['keys'])) {
+            $success = true;
+            $model = new OperationSetForm(['status' => $post['status']]);
+            foreach ($post['keys'] as $key) {
+                $model->docNo = $key;
+                $model->update();
+            }
         }
 
         return $this->goBack();

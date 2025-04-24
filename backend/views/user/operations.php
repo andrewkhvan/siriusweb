@@ -13,15 +13,12 @@ $this->title = Yii::t('app', 'Operations');
     <div class="card-body">
         <?php Pjax::begin(['timeout' => 4000]); ?>
 
-        <div class="d-flex">
+        <div class="d-flex mb-2">
             <div class="flex-grow-1">
-            <?= $linkPager = LinkPager::widget([
-                'pagination' => $pages,
-                'maxButtonCount' => 5,
-                'pageCssClass' => 'page-item',
-                'linkOptions' => ['class' => 'page-link'],
-                'disabledPageCssClass' => 'disabled page-link',
-            ]) ?>
+                <div id="multi-actions" class="py-2">
+                    <button data-status="approve" class="btn btn-success">Approve</button>
+                    <button data-status="cancel" class="btn btn-danger">Decline</button>
+                </div>
             </div>
             <div class="flex-shrink-0 mb-2">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create"><?= Yii::t('app', 'New operation') ?></button>
@@ -31,6 +28,14 @@ $this->title = Yii::t('app', 'Operations');
             </div>
         </div>
 
+        <?= $linkPager = LinkPager::widget([
+            'pagination' => $pages,
+            'maxButtonCount' => 5,
+            'pageCssClass' => 'page-item',
+            'linkOptions' => ['class' => 'page-link'],
+            'disabledPageCssClass' => 'disabled page-link',
+        ]) ?>
+
         <div class="table-responsive">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -38,6 +43,9 @@ $this->title = Yii::t('app', 'Operations');
             'layout' => "{items}",
             'headerRowOptions' => ['class' => 'text-nowrap'],
             'columns' => [
+                [
+                    'class' => 'yii\grid\CheckboxColumn',
+                ],
                 [
                     'attribute' => 'Date',
                     'format' => 'datetime',
@@ -92,7 +100,7 @@ $this->title = Yii::t('app', 'Operations');
         ]) ?>
         </div>
 
-        <?= $linkPager ?>
+        <div class="mt-3"><?= $linkPager ?></div>
 
         <?php Pjax::end(); ?>
     </div>

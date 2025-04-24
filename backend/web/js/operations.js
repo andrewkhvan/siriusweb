@@ -51,6 +51,22 @@
             })
         }
 
+        // Multi actions
+        $(document).on('click', '#multi-actions > button', function (e) {
+            var status = this.getAttribute('data-status');
+            var keys = $('#w0').yiiGridView('getSelectedRows');
+            if (keys.length) {
+                $.ajax({
+                    "method": "post",
+                    "url": "/user/operation-multi-update",
+                    "data": {"status": status, "keys": keys}
+                }).done(function (data) {
+                    location.reload();
+                });
+            } else {
+                alert( 'Not selected!' );
+            }
+        })
 
     })
 })(jQuery);
