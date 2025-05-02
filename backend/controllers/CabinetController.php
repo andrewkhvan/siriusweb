@@ -60,6 +60,33 @@ class CabinetController extends BaseController
         ]);
     }
 
+    public function actionDepositsPdf($id)
+    {
+        $id = (int) $id;
+        $depos = Api::request($func = 'deposits');
+        $depo = $depos->rows[$id];
+
+        $content = $this->renderPartial('deposits_agreement', [
+            'cur_date' => date('Y-m-d H:i:s'),
+            'start_date' => date('Y-m-d H:i:s', $depo->OpenDate),
+            'fio' => Yii::$app->user->identity->fullName,
+            'deposit_summ' => $depo->Investment,
+            'deposit_name' => $depo->InvestmentName,
+            'partner_sign' => 'images/users/sign/blank.png',
+        ]);
+
+        $pdf = new \kartik\mpdf\Pdf([
+            'format' => \kartik\mpdf\Pdf::FORMAT_A4,
+            'orientation' => \kartik\mpdf\Pdf::ORIENT_PORTRAIT,
+            'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
+            'cssFile' => '@webroot/css/pdf.css',
+            'filename' => 'Investment_Agreement_Sirius_'.Yii::$app->user->identity->fullName.'_'.$depo->InvestmentName.'.pdf',
+            'content' => $content,
+        ]);
+
+        return $pdf->render();
+    }
+
     public function actionInvestments()
     {
         $data = Api::request($func = 'investments');

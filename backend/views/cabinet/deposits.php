@@ -1,6 +1,8 @@
 <?php
 /** @var yii\web\View $this */
 
+use yii\helpers\Url;
+
 if (! $this->title) {
     $this->title = Yii::t('app', 'Deposits');
 
@@ -8,7 +10,7 @@ if (! $this->title) {
 }
 
 ?>
-<?php foreach ($data->rows as $row): ?>
+<?php foreach ($data->rows as $key => $row): ?>
     <div class="card">
         <div class="card-body row">
             <div class="col-md-4">
@@ -38,7 +40,11 @@ if (! $this->title) {
                     <div class="text-muted"><?= Yii::t('app', 'Profits received') ?></div>
                 </div>
                 <p><?= Yii::t('app', 'Charges:') ?> <?= $row->Charges ?></p>
-                <p><a href="#" class="btn btn-soft-dark d-block"><?= Yii::t('app', 'Download the contract') ?></a></p>
+                <p>
+                    <a href="<?= Url::to(['cabinet/deposits-pdf', 'id' => $key]) ?>" class="btn btn-soft-dark d-block" target="_blank">
+                        <?= Yii::t('app', 'Download the contract') ?>
+                    </a>
+                </p>
             </div>
         </div>
     </div>
