@@ -15,11 +15,11 @@
   </td>
   <td style="width: 50%; text-align: left; padding-top:25px;">
     <p class="rcol">
-        <?= $cur_date ?><br>
-        Company: SIRIUS ENERGY LIMITED<br>
-        Company Number: 7293686<br>
-        Registered Address: 477 MADDISON AVE, 6TH FLOOR, MANHATTAN ,NY 10022.<br>
-        Mailing Address: support@sirius-energy.co
+      <?= $cur_date ?><br>
+      Company: SIRIUS ENERGY LIMITED<br>
+      Company Number: 7293686<br>
+      Registered Address: 477 MADDISON AVE, 6TH FLOOR, MANHATTAN, NY 10022.<br>
+      Mailing Address: support@sirius-energy.inc
     </p>
   </td>
 </tr>
@@ -28,12 +28,12 @@
  <hr>
 
 <p>
-  This agreement is intended for individuals or legal entities, hereinafter referred to as the "Partner", who enter into a cooperation agreement with Sirius Energy Limited, hereinafter referred to as the "Company", in order to contribute to the investment plan for the development of green technologies in Chile, aimed at solving global air pollution problems, and the sustainable development of the green energy sector in Chile, indicated on the official website of the company. This agreement, hereinafter referred to as the "Agreement", is established by the Company, which specializes in investing in the development of green technologies. The Company, Sirius Energy Limited, sets the terms of this Agreement, according to which the Partner has the opportunity to receive remuneration from the Company to his electronic account, as provided for in this Agreement. In this Agreement, the terms "Partner" and "Company" jointly refer to the parties involved. Sirius Energy Limited is a duly registered company in the United States of America with registration number 7293686. The Company`s registered office is located at 477 MADDISON AVE, 6TH FLOOR, MANHATTAN ,NY 10022.
+  This agreement is intended for individuals or legal entities, hereinafter referred to as the "Partner", who enter into a cooperation agreement with Sirius Energy Limited, hereinafter referred to as the "Company", in order to contribute to the investment plan for the development of green technologies in Chile, aimed at solving global air pollution problems, and the sustainable development of the green energy sector in Chile, indicated on the official website of the company. This agreement, hereinafter referred to as the "Agreement", is established by the Company, which specializes in investing in the development of green technologies. The Company, Sirius Energy Limited, sets the terms of this Agreement, according to which the Partner has the opportunity to receive remuneration from the Company to his electronic account, as provided for in this Agreement. In this Agreement, the terms "Partner" and "Company" jointly refer to the parties involved. Sirius Energy Limited is a duly registered company in the United States of America with registration number 7293686. The Company`s registered office is located at 477 MADDISON AVE, 6TH FLOOR, MANHATTAN, NY 10022.
 
 <h4>Terms and Definitions:</h4>
 
 <p>
-  "Company": Sirius Energy Limited, an international limited liability company registered in the United States of America at 477 MADDISON AVE, MANHATTAN ,NY 10022. The Company is represented by its CEO Adem Yalcin and has its registered office at 477 MADDISON AVE, 6TH FLOOR, MANHATTAN ,NY 10022.
+  "Company": Sirius Energy Limited, an international limited liability company registered in the United States of America at 477 MADDISON AVE, MANHATTAN, NY 10022. The Company is represented by its CEO Adem Yalcin and has its registered office at 477 MADDISON AVE, 6TH FLOOR, MANHATTAN, NY 10022.
 </p>
 <p>
   "Partner": An individual or legal entity that agrees to the terms of this agreement, reads the company`s services, privacy policy, warning about risks, terms of cooperation, disclaimer, and completes registration on the company`s website (https://acccount.sirius-energy.inc). Thus, the Partner gets the opportunity to contribute to the investment plan for the development and promotion of green technologies and receive potential remuneration from the Company.
@@ -180,7 +180,7 @@
   6.1. Partner: "<?= $fio ?>", date of deposit: <?= $start_date ?>
 </p>
 <p>
-  6.2. Deposit amount: <?= $deposit_summ ?>,in the form of USDT (TRC-20) tokens of electronic payment systems.
+  6.2. Deposit amount: <?= $deposit_summ ?>, in the form of USDT (TRC-20) tokens of electronic payment systems.
 </p>
 <p>
   6.3. Selected investment package: <?= $deposit_name ?>.
