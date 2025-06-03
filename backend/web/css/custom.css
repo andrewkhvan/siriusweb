@@ -10,3 +10,6 @@
 .dropdown-head .nav-tabs-custom .active .nav-link {
   background-color: var(--vz-dropdown-bg);
 }
+.alert.partner-notice {
+  color: #ff0071;
+}
