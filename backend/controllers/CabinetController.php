@@ -33,8 +33,19 @@ class CabinetController extends BaseController
 
         $data->apiLoad();
 
+        $partner = Api::request('partner');
+        $country = null;
+        if (is_object($partner)) {
+            if (isset($partner->country)) {
+                $country = $partner->country;
+            } elseif (isset($partner->Country)) {
+                $country = $partner->Country;
+            }
+        }
+
         return $this->render('index', [
             'data' => $data,
+            'country' => $country,
         ]);
     }
 
