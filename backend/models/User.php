@@ -19,6 +19,8 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $balance;
     public $ref_balance;
     public $language;
+    public $paid;
+    public $wAddressIn;
 
     private static $users = [
         '100' => [
@@ -104,6 +106,8 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
                 'accessToken' => md5('accessToken_' . $data->PartnerId),
                 'isAdmin' => $data->IsAdmin,
                 'language' => $data->language,
+                'paid' => $data->Paid,
+                'wAddressIn' => $data->WAddressIn,
             ];
             // Yii::$app->session->set('user', $user);
 
