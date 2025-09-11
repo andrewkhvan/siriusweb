@@ -22,6 +22,22 @@ class BaseController extends \yii\web\Controller
 
         Yii::$app->language = $session->get('lang');
 
-        return parent::beforeAction($action);
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        if (!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->identity;
+            if (!$user->paid) {
+                $route = $action->uniqueId;
+                $allowed = ['cabinet/index', 'auth/logout'];
+                if (!in_array($route, $allowed, true)) {
+                    Yii::$app->response->redirect(['cabinet/index'])->send();
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
