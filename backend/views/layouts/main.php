@@ -94,6 +94,11 @@ if ($partner && !$partner->paid): ?>
                         </p>
                     <?php endif; ?>
                 </div>
+                <div class="modal-footer">
+                    <?= Html::beginForm(['/auth/logout'], 'post') ?>
+                        <button type="submit" class="btn btn-secondary">Выйти</button>
+                    <?= Html::endForm() ?>
+                </div>
             </div>
         </div>
     </div>
@@ -115,7 +120,7 @@ document.getElementById('abonentka-modal').addEventListener('shown.bs.modal', fu
 });
 JS;
     $this->registerJs($js);
-    $this->registerCss('.abonentka-backdrop { backdrop-filter: blur(5px); }');
+    $this->registerCss('.abonentka-backdrop { backdrop-filter: blur(15px); }');
 endif;
 ?>
 
