@@ -30,7 +30,8 @@ class BaseController extends \yii\web\Controller
             $user = Yii::$app->user->identity;
             if (!$user->paid) {
                 $route = $action->uniqueId;
-                $allowed = ['cabinet/index', 'auth/logout'];
+                // Allow cabinet dashboard and its auxiliary endpoints
+                $allowed = ['cabinet/index', 'cabinet/index-chart', 'auth/logout'];
                 if (!in_array($route, $allowed, true)) {
                     Yii::$app->response->redirect(['cabinet/index'])->send();
                     return false;
