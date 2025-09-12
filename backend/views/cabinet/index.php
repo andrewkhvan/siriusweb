@@ -6,13 +6,14 @@ use backend\models\User;
 
 $this->title = Yii::t('app', 'Cabinet');
 $this->params['breadcumbs'][] = $this->title;
+$showPartnerNotice = false;
 
 ?>
 <div class="row">
     <div class="col-sm-12 col-xl-9 col-xxl-10">
 
 <h4><?= Yii::t('app', 'Personal account') ?></h4>
-<?php if ($country === 'KZ'): ?>
+<?php if ($showPartnerNotice && $country === 'KZ'): ?>
 <div class="alert alert-warning alert-dismissible fade show partner-notice" role="alert">
     <strong>⚠ ВАЖНОЕ УВЕДОМЛЕНИЕ ДЛЯ НАШИХ ПАРТНЁРОВ</strong><br>
     Уважаемые партнёры! В Казахстане в отношении нашей компании осуществляется давление со стороны Департамента экономических расследований, в том числе — на наших инвесторов. Распространяется ложная информация о якобы задержании руководства. Не поддавайтесь панике и провокациям.<br><br>
