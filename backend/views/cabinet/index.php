@@ -12,7 +12,7 @@ $this->params['breadcumbs'][] = $this->title;
     <div class="col-sm-12 col-xl-9 col-xxl-10">
 
 <h4><?= Yii::t('app', 'Personal account') ?></h4>
-<?php if ($country === 'KZ'): ?>
+<?php /* if ($country === 'KZ'): ?>
 <div class="alert alert-warning alert-dismissible fade show partner-notice" role="alert">
     <strong>⚠ ВАЖНОЕ УВЕДОМЛЕНИЕ ДЛЯ НАШИХ ПАРТНЁРОВ</strong><br>
     Уважаемые партнёры! В Казахстане в отношении нашей компании осуществляется давление со стороны Департамента экономических расследований, в том числе — на наших инвесторов. Распространяется ложная информация о якобы задержании руководства. Не поддавайтесь панике и провокациям.<br><br>
@@ -27,7 +27,7 @@ $this->params['breadcumbs'][] = $this->title;
     Просим сохранять спокойствие и доверять только официальным источникам информации от компании. Благодарим за вашу поддержку, понимание и лояльность!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-<?php endif; ?>
+<?php endif; */ ?>
 <div class="row">
     <div class="col-xl-12">
         <div class="card crm-widget">
