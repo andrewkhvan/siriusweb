@@ -11,6 +11,73 @@ use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
+
+$partner = Yii::$app->user->identity ?? null;
+if ($partner && !$partner->paid) {
+    $this->beginPage();
+    ?>
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>">
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="/favicon.png" type="image/x-icon">
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?> | <?= Yii::$app->name ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body class="d-flex justify-content-center align-items-center min-vh-100"
+          style="background: url('<?= Yii::getAlias('@web/images/solar_bg.jpg') ?>') center center / cover no-repeat fixed;">
+    <?php $this->beginBody() ?>
+        <div class="modal d-block" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Уважаемые партнёры!
+
+Для корректной работы платформы и возможности проведения всех выплат и возвратов средств важно иметь точные и актуальные данные пользователей.
+
+В связи с этим необходимо пройти процедуру верификации аккаунта. Она предусматривает оплату в размере 60 USDT на кошелек указанный тут, после чего ваш кабинет будет активирован, а система получит необходимые данные для корректной обработки выплат.
+
+Эти средства направляются на поддержку стабильной работы сайта и идентификацию пользователей.Это позволит обеспечить защиту аккаунтов и сохранить их в актуальном состоянии.
+
+Оплату необходимо произвести до 20 сентября. Данная процедура является обязательной и взимается ежегодно.</p>
+                        <?php if ($partner->wAddressIn): ?>
+                            <p class="rounded p-1 bg-success-subtle text-center">
+                                <a href="#" class="text-success-emphasis" id="copy-waddress-modal" data-copy-text="<?= $partner->wAddressIn ?>">
+                                    <i class="mdi mdi-content-copy"></i> <?= $partner->wAddressIn ?>
+                                </a>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <?= Html::beginForm(['/auth/logout'], 'post') ?>
+                        <button type="submit" class="btn btn-secondary">Выйти</button>
+                        <?= Html::endForm() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    $js = <<<JS
+var copyBtn = document.getElementById('copy-waddress-modal');
+if (copyBtn) {
+    copyBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        navigator.clipboard.writeText(this.getAttribute('data-copy-text'));
+        alert('Copied to clipboard');
+    });
+}
+JS;
+    $this->registerJs($js);
+    $this->endBody();
+    ?>
+    </body>
+    </html>
+    <?php
+    $this->endPage();
+    return;
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -69,60 +136,6 @@ AppAsset::register($this);
     </main>
 
 </div>
-
-<?php
-$partner = Yii::$app->user->identity ?? null;
-if ($partner && !$partner->paid): ?>
-    <div class="modal fade" id="abonentka-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p>Уважаемые партнёры!
-
-Для корректной работы платформы и возможности проведения всех выплат и возвратов средств важно иметь точные и актуальные данные пользователей.
-
-В связи с этим необходимо пройти процедуру верификации аккаунта. Она предусматривает оплату в размере 60 USDT на кошелек указанный тут, после чего ваш кабинет будет активирован, а система получит необходимые данные для корректной обработки выплат.
-
-Эти средства направляются на поддержку стабильной работы сайта и идентификацию пользователей.Это позволит обеспечить защиту аккаунтов и сохранить их в актуальном состоянии.
-
-Оплату необходимо произвести до 20 сентября. Данная процедура является обязательной и взимается ежегодно.</p>
-                    <?php if ($partner->wAddressIn): ?>
-                        <p class="rounded p-1 bg-success-subtle text-center">
-                            <a href="#" class="text-success-emphasis" id="copy-waddress-modal" data-copy-text="<?= $partner->wAddressIn ?>">
-                                <i class="mdi mdi-content-copy"></i> <?= $partner->wAddressIn ?>
-                            </a>
-                        </p>
-                    <?php endif; ?>
-                </div>
-                <div class="modal-footer">
-                    <?= Html::beginForm(['/auth/logout'], 'post') ?>
-                        <button type="submit" class="btn btn-secondary">Выйти</button>
-                    <?= Html::endForm() ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-    $js = <<<JS
-var abModal = new bootstrap.Modal(document.getElementById('abonentka-modal'), {backdrop: 'static', keyboard: false});
-abModal.show();
-var copyBtn = document.getElementById('copy-waddress-modal');
-if (copyBtn) {
-    copyBtn.addEventListener('click', function(e){
-        e.preventDefault();
-        navigator.clipboard.writeText(this.getAttribute('data-copy-text'));
-        alert('Copied to clipboard');
-    });
-}
-document.getElementById('abonentka-modal').addEventListener('shown.bs.modal', function () {
-    var backdrop = document.querySelector('.modal-backdrop');
-    if (backdrop) { backdrop.classList.add('abonentka-backdrop'); }
-});
-JS;
-    $this->registerJs($js);
-    $this->registerCss('.abonentka-backdrop { backdrop-filter: blur(15px); }');
-endif;
-?>
 
 <?php $this->endBody() ?>
 </body>
